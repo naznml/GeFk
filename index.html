@@ -7,39 +7,32 @@
 
   <style>
     :root{
-      --bg:#f5f7f2;
-      --bg2:#eef4e8;
+      --bg:#f5f7fb;
       --card:#ffffff;
-      --text:#17211a;
-      --muted:#667064;
-      --green:#2f6b4f;
-      --green2:#4d8c65;
-      --deep:#123528;
-      --sand:#e9d9ad;
-      --blue:#2e6d8f;
-      --orange:#c77b3a;
-      --red:#b64b4b;
-      --line:#d9e2d3;
-      --shadow:0 18px 45px rgba(23,33,26,.10);
-      --radius:24px;
+      --text:#1f2937;
+      --muted:#6b7280;
+      --primary:#2563eb;
+      --primary-dark:#1d4ed8;
+      --soft:#e8f0ff;
+      --green:#16a34a;
+      --red:#dc2626;
+      --orange:#f59e0b;
+      --border:#dbe3f0;
+      --shadow:0 18px 45px rgba(15,23,42,.08);
+      --radius:22px;
     }
 
     *{
       box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
     }
 
     body{
+      margin:0;
       font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(77,140,101,.18), transparent 34%),
-        radial-gradient(circle at top right, rgba(46,109,143,.14), transparent 30%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
+        radial-gradient(circle at top left, rgba(37,99,235,.16), transparent 32%),
+        radial-gradient(circle at top right, rgba(22,163,74,.12), transparent 28%),
+        var(--bg);
       color:var(--text);
       line-height:1.65;
     }
@@ -49,507 +42,511 @@
       text-decoration:none;
     }
 
-    button{
-      font-family:inherit;
-    }
-
-    .page{
+    .app{
       width:min(1180px, calc(100% - 28px));
       margin:0 auto;
+      padding:28px 0 70px;
     }
 
     .topbar{
-      padding:18px 0 10px;
-    }
-
-    .nav{
-      background:rgba(255,255,255,.78);
-      backdrop-filter:blur(18px);
-      border:1px solid rgba(217,226,211,.95);
-      border-radius:999px;
-      box-shadow:0 10px 30px rgba(23,33,26,.07);
-      padding:10px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+      align-items:center;
+      gap:16px;
+      padding:16px 18px;
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(219,227,240,.9);
+      border-radius:24px;
+      box-shadow:0 12px 35px rgba(15,23,42,.06);
+      backdrop-filter:blur(14px);
+      margin-bottom:26px;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
-      padding-left:8px;
-      font-weight:900;
-      letter-spacing:.2px;
-      color:var(--deep);
+      gap:12px;
+      min-width:0;
     }
 
-    .brand-icon{
-      width:38px;
-      height:38px;
-      border-radius:14px;
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:15px;
       display:grid;
       place-items:center;
-      background:linear-gradient(135deg, var(--green), var(--blue));
-      color:white;
-      box-shadow:0 10px 20px rgba(47,107,79,.22);
+      background:linear-gradient(135deg, #2563eb, #16a34a);
+      color:#fff;
+      font-weight:900;
+      letter-spacing:.5px;
+      box-shadow:0 12px 26px rgba(37,99,235,.28);
+      flex:none;
     }
 
-    .navlinks{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      flex-wrap:wrap;
+    .brand-title{
+      font-size:16px;
+      font-weight:850;
+      line-height:1.2;
     }
 
-    .navlinks a{
-      padding:9px 14px;
-      border-radius:999px;
+    .brand-subtitle{
+      font-size:12px;
       color:var(--muted);
-      font-weight:750;
-      font-size:14px;
-      transition:.2s ease;
+      margin-top:2px;
     }
 
-    .navlinks a:hover{
-      background:var(--bg2);
-      color:var(--green);
+    .nav-actions{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:8px;
+    }
+
+    .nav-btn{
+      border:1px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      padding:10px 13px;
+      border-radius:999px;
+      font-weight:750;
+      cursor:pointer;
+      transition:.2s ease;
+      font-size:13px;
+    }
+
+    .nav-btn:hover{
+      border-color:rgba(37,99,235,.45);
+      color:var(--primary);
+      transform:translateY(-1px);
     }
 
     .hero{
-      padding:64px 0 34px;
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:28px;
-      align-items:center;
-    }
-
-    .hero-card{
-      background:
-        linear-gradient(135deg, rgba(18,53,40,.96), rgba(47,107,79,.91)),
-        url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='.06'%3E%3Cpath d='M28 42c22-20 44-20 66 0s44 20 66 0v18c-22 20-44 20-66 0s-44-20-66 0z'/%3E%3Cpath d='M0 116c28-26 56-26 84 0s56 26 84 0v20c-28 26-56 26-84 0s-56-26-84 0z'/%3E%3C/g%3E%3C/svg%3E");
-      color:white;
-      border-radius:36px;
-      padding:42px;
-      box-shadow:var(--shadow);
       position:relative;
       overflow:hidden;
+      border-radius:32px;
+      background:
+        linear-gradient(135deg, rgba(15,23,42,.92), rgba(37,99,235,.86)),
+        linear-gradient(45deg, #0f172a, #2563eb);
+      color:#fff;
+      padding:44px;
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
     }
 
-    .hero-card::after{
+    .hero::after{
       content:"";
       position:absolute;
-      width:230px;
-      height:230px;
-      border-radius:999px;
-      right:-70px;
-      bottom:-80px;
-      background:rgba(233,217,173,.20);
+      right:-80px;
+      top:-80px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:rgba(255,255,255,.12);
     }
 
-    .kicker{
+    .hero::before{
+      content:"";
+      position:absolute;
+      right:120px;
+      bottom:-120px;
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:rgba(22,163,74,.22);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:1;
+      max-width:850px;
+    }
+
+    .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:8px 13px;
-      border:1px solid rgba(255,255,255,.25);
+      padding:8px 12px;
       border-radius:999px;
-      background:rgba(255,255,255,.11);
-      font-weight:800;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.2);
       font-size:13px;
-      margin-bottom:18px;
+      font-weight:800;
+      margin-bottom:16px;
     }
 
-    .hero h1{
-      font-size:clamp(34px, 5vw, 66px);
-      line-height:1.03;
-      letter-spacing:-1.8px;
-      margin-bottom:18px;
-      max-width:820px;
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(30px, 5vw, 56px);
+      line-height:1.04;
+      letter-spacing:-.04em;
     }
 
     .hero p{
-      color:rgba(255,255,255,.84);
-      max-width:710px;
+      margin:0;
       font-size:17px;
+      color:rgba(255,255,255,.86);
+      max-width:760px;
     }
 
-    .hero-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
       margin-top:26px;
     }
 
-    .btn{
-      border:0;
-      cursor:pointer;
-      border-radius:999px;
-      padding:13px 18px;
-      font-weight:900;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      transition:.18s ease;
-    }
-
-    .btn-primary{
-      background:white;
-      color:var(--deep);
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 14px 25px rgba(0,0,0,.14);
-    }
-
-    .btn-soft{
+    .stat{
       background:rgba(255,255,255,.12);
-      color:white;
-      border:1px solid rgba(255,255,255,.24);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:18px;
+      padding:15px;
     }
 
-    .btn-soft:hover{
-      background:rgba(255,255,255,.18);
-    }
-
-    .side-panel{
-      display:grid;
-      gap:14px;
-    }
-
-    .stat-card{
-      background:rgba(255,255,255,.84);
-      border:1px solid rgba(217,226,211,.9);
-      border-radius:26px;
-      padding:22px;
-      box-shadow:0 14px 35px rgba(23,33,26,.07);
-    }
-
-    .stat-card strong{
+    .stat b{
       display:block;
-      font-size:30px;
-      line-height:1.1;
-      color:var(--green);
-      margin-bottom:5px;
+      font-size:24px;
+      line-height:1;
+      margin-bottom:6px;
     }
 
-    .stat-card span{
-      color:var(--muted);
+    .stat span{
+      color:rgba(255,255,255,.78);
+      font-size:13px;
       font-weight:650;
-      font-size:14px;
     }
 
     .section{
-      padding:34px 0;
+      margin-top:28px;
     }
 
     .section-head{
       display:flex;
       justify-content:space-between;
       align-items:flex-end;
-      gap:18px;
-      margin-bottom:20px;
-      flex-wrap:wrap;
+      gap:16px;
+      margin-bottom:16px;
     }
 
     .section-title{
-      font-size:clamp(26px, 3vw, 42px);
-      line-height:1.12;
-      letter-spacing:-.8px;
-      color:var(--deep);
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.02em;
+      line-height:1.15;
     }
 
-    .section-subtitle{
+    .section-desc{
+      margin:6px 0 0;
       color:var(--muted);
-      max-width:780px;
-      margin-top:8px;
-      font-size:15.5px;
+      max-width:760px;
     }
 
-    .grid-3{
+    .grid{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
       gap:18px;
     }
 
     .book-card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:24px;
-      box-shadow:0 16px 38px rgba(23,33,26,.07);
-      position:relative;
-      overflow:hidden;
-      min-height:280px;
+      min-height:275px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      gap:18px;
+      padding:22px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:0 14px 35px rgba(15,23,42,.06);
+      cursor:pointer;
+      transition:.22s ease;
+      position:relative;
+      overflow:hidden;
     }
 
-    .book-card::before{
+    .book-card::after{
       content:"";
       position:absolute;
-      inset:0 0 auto 0;
-      height:8px;
-      background:linear-gradient(90deg, var(--green), var(--blue), var(--sand));
+      right:-44px;
+      top:-44px;
+      width:125px;
+      height:125px;
+      border-radius:50%;
+      background:var(--soft);
+      transition:.22s ease;
     }
 
-    .book-num{
+    .book-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 22px 45px rgba(15,23,42,.1);
+      border-color:rgba(37,99,235,.36);
+    }
+
+    .book-card:hover::after{
+      transform:scale(1.25);
+      background:rgba(37,99,235,.12);
+    }
+
+    .book-number{
+      position:relative;
+      z-index:1;
       width:44px;
       height:44px;
+      border-radius:15px;
+      background:var(--soft);
+      color:var(--primary);
       display:grid;
       place-items:center;
-      border-radius:16px;
-      background:var(--bg2);
-      color:var(--green);
-      font-weight:950;
-      margin-bottom:18px;
+      font-weight:900;
     }
 
     .book-card h3{
+      position:relative;
+      z-index:1;
+      margin:0;
       font-size:21px;
-      line-height:1.24;
-      color:var(--deep);
-      margin-bottom:12px;
+      line-height:1.22;
+      letter-spacing:-.02em;
     }
 
     .book-card p{
+      position:relative;
+      z-index:1;
+      margin:10px 0 0;
       color:var(--muted);
-      font-size:14.5px;
+      font-size:14px;
     }
 
     .book-meta{
+      position:relative;
+      z-index:1;
       display:flex;
-      gap:8px;
       flex-wrap:wrap;
-      margin-top:18px;
+      gap:8px;
     }
 
-    .pill{
+    .tag{
       display:inline-flex;
-      padding:6px 10px;
+      align-items:center;
+      gap:6px;
+      padding:7px 10px;
       border-radius:999px;
-      background:#f0f4ed;
-      color:var(--green);
-      font-size:12.5px;
-      font-weight:850;
+      background:#f3f6fb;
+      border:1px solid var(--border);
+      color:#475569;
+      font-size:12px;
+      font-weight:780;
     }
 
-    .open-btn{
-      margin-top:22px;
-      border:0;
-      width:100%;
-      justify-content:center;
-      background:var(--deep);
-      color:white;
-    }
-
-    .open-btn:hover{
-      background:var(--green);
-    }
-
-    .tabs{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin:8px 0 20px;
-    }
-
-    .tab-btn{
-      border:1px solid var(--line);
-      background:white;
-      color:var(--muted);
-      border-radius:999px;
-      padding:10px 14px;
-      cursor:pointer;
-      font-weight:850;
-      transition:.18s ease;
-    }
-
-    .tab-btn.active,
-    .tab-btn:hover{
-      background:var(--green);
-      color:white;
-      border-color:var(--green);
-    }
-
-    .book-section{
+    .page{
       display:none;
+      animation:fadeIn .25s ease both;
     }
 
-    .book-section.active{
+    .page.active{
       display:block;
-      animation:fadeIn .24s ease;
     }
 
     @keyframes fadeIn{
       from{opacity:0; transform:translateY(8px);}
-      to{opacity:1; transform:translateY(0);}
+      to{opacity:1; transform:none;}
+    }
+
+    .book-hero{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:30px;
+      margin-bottom:20px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .book-hero::after{
+      content:"";
+      position:absolute;
+      right:-70px;
+      bottom:-90px;
+      width:230px;
+      height:230px;
+      border-radius:50%;
+      background:rgba(37,99,235,.08);
+    }
+
+    .breadcrumb{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:750;
+      margin-bottom:12px;
+    }
+
+    .back-btn{
+      border:0;
+      background:var(--soft);
+      color:var(--primary);
+      padding:9px 12px;
+      border-radius:999px;
+      font-weight:850;
+      cursor:pointer;
+    }
+
+    .book-hero h2{
+      margin:0 0 12px;
+      font-size:clamp(27px, 4vw, 42px);
+      line-height:1.08;
+      letter-spacing:-.035em;
+      max-width:850px;
+    }
+
+    .book-hero p{
+      margin:0;
+      color:#4b5563;
+      max-width:850px;
+      font-size:16px;
+    }
+
+    .info-strip{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:12px;
+      margin-top:22px;
+      position:relative;
+      z-index:1;
+    }
+
+    .info-item{
+      background:#f8fafc;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:14px;
+    }
+
+    .info-item b{
+      display:block;
+      font-size:14px;
+      margin-bottom:3px;
+    }
+
+    .info-item span{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:650;
     }
 
     .chapter-grid{
       display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:16px;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
     }
 
     .chapter-card{
-      background:white;
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:20px;
-      box-shadow:0 12px 28px rgba(23,33,26,.055);
-    }
-
-    .chapter-top{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:18px;
+      cursor:pointer;
+      transition:.2s ease;
+      min-height:142px;
       display:flex;
-      align-items:flex-start;
+      flex-direction:column;
       justify-content:space-between;
       gap:12px;
-      margin-bottom:10px;
+      box-shadow:0 10px 25px rgba(15,23,42,.045);
     }
 
-    .chapter-card h4{
-      font-size:18px;
-      color:var(--deep);
-      line-height:1.32;
+    .chapter-card:hover{
+      border-color:rgba(37,99,235,.42);
+      transform:translateY(-3px);
+      box-shadow:0 18px 35px rgba(15,23,42,.08);
+    }
+
+    .chapter-card h3{
+      margin:0;
+      font-size:17px;
+      line-height:1.25;
     }
 
     .chapter-card p{
+      margin:8px 0 0;
       color:var(--muted);
-      font-size:14.5px;
-      margin-top:8px;
+      font-size:13px;
     }
 
-    .tag-row{
+    .chapter-footer{
       display:flex;
-      flex-wrap:wrap;
-      gap:7px;
-      margin-top:14px;
-    }
-
-    .kta-tag{
-      font-size:12px;
-      font-weight:850;
-      color:#2d5f49;
-      background:#edf5ef;
-      border:1px solid #d8e7dc;
-      border-radius:999px;
-      padding:5px 9px;
-    }
-
-    .chapter-link{
-      display:inline-flex;
+      justify-content:space-between;
       align-items:center;
-      gap:7px;
-      margin-top:16px;
-      color:var(--green);
-      font-weight:900;
-      cursor:pointer;
+      gap:10px;
+      color:var(--primary);
+      font-size:13px;
+      font-weight:850;
     }
 
     .content-block{
-      background:rgba(255,255,255,.86);
-      border:1px solid var(--line);
-      border-radius:28px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:24px;
       padding:24px;
-      margin-top:18px;
-      box-shadow:0 16px 38px rgba(23,33,26,.07);
-    }
-
-    .mini-title{
-      font-size:23px;
-      color:var(--deep);
-      margin-bottom:8px;
-      letter-spacing:-.3px;
-    }
-
-    .lead{
-      color:var(--muted);
-      max-width:920px;
-    }
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:16px;
+      box-shadow:0 12px 30px rgba(15,23,42,.05);
       margin-top:18px;
     }
 
-    .note{
-      background:#f6f8f3;
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:18px;
+    .content-block h3{
+      margin:0 0 10px;
+      font-size:22px;
+      letter-spacing:-.02em;
     }
 
-    .note h5{
-      color:var(--green);
-      font-size:16px;
-      margin-bottom:8px;
+    .content-block p{
+      margin:0 0 12px;
+      color:#374151;
     }
 
-    .note ul{
-      padding-left:18px;
-      color:var(--text);
-    }
-
-    .note li{
-      margin:5px 0;
-    }
-
-    .term-list{
+    .term-grid{
       display:grid;
-      gap:10px;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:14px;
     }
 
     .term{
-      padding:12px 14px;
-      border-radius:16px;
-      background:white;
-      border:1px solid var(--line);
+      padding:14px;
+      border-radius:17px;
+      border:1px solid var(--border);
+      background:#f8fafc;
     }
 
     .term b{
-      color:var(--deep);
+      display:block;
+      margin-bottom:4px;
     }
 
-    .quiz-wrap{
-      margin-top:20px;
+    .term span{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .test-box{
+      margin-top:16px;
       display:grid;
-      gap:16px;
+      gap:14px;
     }
 
-    .question-card{
-      background:white;
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:20px;
-      box-shadow:0 12px 26px rgba(23,33,26,.055);
+    .question{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:18px;
+      box-shadow:0 8px 24px rgba(15,23,42,.045);
     }
 
-    .question-head{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
-      margin-bottom:14px;
-    }
-
-    .q-num{
-      color:var(--green);
-      font-weight:950;
-      white-space:nowrap;
-    }
-
-    .question-card h5{
-      font-size:17px;
-      color:var(--deep);
-      line-height:1.42;
-      flex:1;
+    .question h4{
+      margin:0 0 14px;
+      font-size:16px;
+      line-height:1.45;
     }
 
     .options{
@@ -558,993 +555,1090 @@
     }
 
     .option{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:12px 13px;
-      cursor:pointer;
-      transition:.16s ease;
       display:flex;
-      gap:10px;
       align-items:flex-start;
-      background:#fbfcfa;
-      color:var(--text);
+      gap:10px;
+      padding:11px 12px;
+      border:1px solid var(--border);
+      border-radius:15px;
+      background:#f8fafc;
+      cursor:pointer;
+      transition:.15s ease;
+      color:#334155;
       font-weight:650;
     }
 
     .option:hover{
-      border-color:#b9cfbe;
-      background:#f3f8f1;
+      border-color:rgba(37,99,235,.42);
+      background:#f2f7ff;
     }
 
     .option input{
-      margin-top:5px;
-      accent-color:var(--green);
-    }
-
-    .result{
-      display:none;
-      margin-top:12px;
-      padding:13px 14px;
-      border-radius:16px;
-      font-weight:750;
-    }
-
-    .result.correct{
-      display:block;
-      background:#eaf6ee;
-      color:#20583d;
-      border:1px solid #b9dfc4;
-    }
-
-    .result.wrong{
-      display:block;
-      background:#fff1ef;
-      color:#8d3333;
-      border:1px solid #f0c2bd;
-    }
-
-    .quiz-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:16px;
+      margin-top:4px;
+      flex:none;
     }
 
     .check-btn{
       border:0;
-      background:var(--green);
-      color:white;
-      border-radius:999px;
-      padding:12px 18px;
-      font-weight:900;
+      background:var(--primary);
+      color:#fff;
+      padding:12px 16px;
+      border-radius:16px;
+      font-weight:850;
       cursor:pointer;
+      transition:.2s ease;
+      margin-top:12px;
     }
 
-    .reset-btn{
-      border:1px solid var(--line);
-      background:white;
-      color:var(--green);
-      border-radius:999px;
-      padding:12px 18px;
-      font-weight:900;
-      cursor:pointer;
+    .check-btn:hover{
+      background:var(--primary-dark);
+      transform:translateY(-1px);
     }
 
-    .score-box{
+    .result-note{
       display:none;
-      margin-top:14px;
-      border-radius:18px;
-      padding:15px 16px;
-      background:var(--deep);
-      color:white;
-      font-weight:900;
-    }
-
-    .footer-note{
-      padding:34px 0 18px;
-      color:var(--muted);
-      text-align:center;
+      margin-top:12px;
+      padding:12px;
+      border-radius:15px;
+      background:#f8fafc;
+      border:1px solid var(--border);
+      color:#475569;
       font-size:14px;
     }
 
-    @media (max-width:900px){
-      .hero{
-        grid-template-columns:1fr;
-        padding-top:34px;
-      }
+    .source-footer{
+      margin-top:38px;
+      padding:20px;
+      border-radius:22px;
+      background:#fff;
+      border:1px solid var(--border);
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+    }
 
-      .grid-3,
+    @media (max-width: 920px){
+      .grid,
       .chapter-grid,
-      .info-grid{
-        grid-template-columns:1fr;
+      .stats,
+      .info-strip{
+        grid-template-columns:repeat(2, 1fr);
       }
 
-      .hero-card{
-        padding:28px;
-        border-radius:28px;
+      .hero{
+        padding:34px 24px;
       }
 
-      .nav{
-        border-radius:24px;
+      .topbar{
+        align-items:flex-start;
+        flex-direction:column;
       }
 
-      .navlinks{
-        width:100%;
-      }
-
-      .navlinks a{
-        flex:1;
-        text-align:center;
-        background:#f6f8f3;
+      .nav-actions{
+        justify-content:flex-start;
       }
     }
 
-    @media (max-width:520px){
-      .page{
+    @media (max-width: 640px){
+      .app{
         width:min(100% - 18px, 1180px);
+        padding-top:12px;
       }
 
-      .hero h1{
-        font-size:34px;
+      .hero{
+        border-radius:24px;
+        padding:28px 20px;
       }
 
-      .hero-card,
-      .book-card,
-      .content-block{
-        padding:20px;
+      .grid,
+      .chapter-grid,
+      .stats,
+      .info-strip,
+      .term-grid{
+        grid-template-columns:1fr;
       }
 
-      .section{
-        padding:24px 0;
+      .book-card{
+        min-height:auto;
       }
 
-      .question-head{
-        display:block;
+      .nav-btn{
+        font-size:12px;
+        padding:9px 11px;
       }
 
-      .q-num{
-        display:block;
-        margin-bottom:6px;
+      .book-hero{
+        padding:22px;
+        border-radius:24px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="page">
-      <nav class="nav">
-        <a href="#home" class="brand">
-          <span class="brand-icon">⛰</span>
-          <span>Физикалық география I</span>
-        </a>
-
-        <div class="navlinks">
-          <a href="#books">Кітаптар</a>
-          <a href="#structure">Құрылым</a>
-          <a href="#practice">Тесттер</a>
-          <a href="#copyright">Құқық</a>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">КТА</div>
+        <div>
+          <div class="brand-title">Қазақстанның физикалық географиясы I</div>
+          <div class="brand-subtitle">Магистратураға түсуге арналған география дайындығы</div>
         </div>
+      </div>
+
+      <nav class="nav-actions">
+        <button class="nav-btn" data-open="homePage">Басты бет</button>
+        <button class="nav-btn" data-open="bookNaumenko">1-кітап</button>
+        <button class="nav-btn" data-open="bookMamirova">2-кітап</button>
+        <button class="nav-btn" data-open="bookDzhanalieva">3-кітап</button>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main id="home">
-    <section class="hero page">
-      <div class="hero-card">
-        <div class="kicker">КТА дайындық курсы · География</div>
-        <h1>Қазақстанның физикалық географиясы I</h1>
-        <p>
-          Бұл сайт Қазақстан табиғатының қалыптасу заңдылықтарын, табиғи компоненттерін,
-          физикалық-географиялық аудандастырылуын және КТА тақырыптарымен байланысты
-          негізгі ұғымдарды жүйелі қайталауға арналған.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#books" class="btn btn-primary">Кітаптарды ашу</a>
-          <a href="#practice" class="btn btn-soft">Тестке өту</a>
-        </div>
-      </div>
-
-      <aside class="side-panel">
-        <div class="stat-card">
-          <strong>3</strong>
-          <span>негізгі кітап бөлімі</span>
-        </div>
-        <div class="stat-card">
-          <strong>26</strong>
-          <span>КТА тақырыптық бағытымен байланыс</span>
-        </div>
-        <div class="stat-card">
-          <strong>5</strong>
-          <span>әр сұрақтағы жауап нұсқасы</span>
-        </div>
-      </aside>
-    </section>
-
-    <section id="books" class="section page">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Кітаптар бойынша оқу</h2>
-          <p class="section-subtitle">
-            Әр кітап жеке бөлім ретінде берілген. Кітапты таңдағаннан кейін оның тақырыптары,
-            қысқаша сипаттамасы, негізгі терминдері және КТА үлгісіндегі тесттері ашылады.
-          </p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <article class="book-card">
-          <div>
-            <div class="book-num">1</div>
-            <h3>Физическая география Казахстана</h3>
+    <main>
+      <section class="page active" id="homePage">
+        <div class="hero">
+          <div class="hero-content">
+            <div class="eyebrow">География · КТА · 1-модуль</div>
+            <h1>Қазақстанның физикалық географиясы I</h1>
             <p>
-              Е.Н. Вилесов, А.А. Науменко, Л.К. Веселова, Б.Ж. Аубекеров.
-              Қазақстан табиғатының негізгі компоненттері мен аудандастырылуы қарастырылады.
+              Бұл бөлім Қазақстан табиғатының қалыптасу заңдылықтарын, географиялық орнын,
+              зерттелу тарихын, жер бедерін, климатын, ішкі суларын, топырақ-өсімдік
+              жамылғысын, жануарлар дүниесін және табиғи аудандастырылуын жүйелі қайталауға арналған.
             </p>
-            <div class="book-meta">
-              <span class="pill">2009</span>
-              <span class="pill">Қазақ университеті</span>
-              <span class="pill">физикалық география</span>
+
+            <div class="stats">
+              <div class="stat">
+                <b>3</b>
+                <span>негізгі кітап</span>
+              </div>
+              <div class="stat">
+                <b>26</b>
+                <span>КТА тақырыбы</span>
+              </div>
+              <div class="stat">
+                <b>5</b>
+                <span>жауап нұсқасы</span>
+              </div>
+              <div class="stat">
+                <b>1</b>
+                <span>дұрыс жауап</span>
+              </div>
             </div>
           </div>
-          <button class="btn open-btn" data-open-book="book1">1-кітапты ашу</button>
-        </article>
-
-        <article class="book-card">
-          <div>
-            <div class="book-num">2</div>
-            <h3>Физическая география Казахстана</h3>
-            <p>
-              К.Н. Мамирова. Қазақстанның табиғи компоненттері, табиғи кешендері,
-              аймақтық ерекшеліктері және қорғалатын аумақтары жүйеленеді.
-            </p>
-            <div class="book-meta">
-              <span class="pill">2015</span>
-              <span class="pill">Қыздар университеті</span>
-              <span class="pill">оқу құралы</span>
-            </div>
-          </div>
-          <button class="btn open-btn" data-open-book="book2">2-кітапты ашу</button>
-        </article>
-
-        <article class="book-card">
-          <div>
-            <div class="book-num">3</div>
-            <h3>Физическая география Республики Казахстан</h3>
-            <p>
-              Г.М. Джаналиева редакциясымен берілген еңбектегі Қазақстан табиғатының
-              физикалық-географиялық ерекшеліктері жеке оқу бөлімі ретінде ұсынылады.
-            </p>
-            <div class="book-meta">
-              <span class="pill">1998</span>
-              <span class="pill">Қазақ университеті</span>
-              <span class="pill">Қазақстан табиғаты</span>
-            </div>
-          </div>
-          <button class="btn open-btn" data-open-book="book3">3-кітапты ашу</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="structure" class="section page">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Оқу құрылымы</h2>
-          <p class="section-subtitle">
-            Кітап бөлімдері КТА-ның ресми тақырыптарымен байланыстырылады. Бір тақырып
-            бірнеше кітапта қайталанса, жаңа дерек, жаңа жіктеу немесе аймақтық ерекшелік
-            болған жағдайда ғана жеке оқу материалы ретінде беріледі.
-          </p>
         </div>
-      </div>
 
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="book1">1-кітап</button>
-        <button class="tab-btn" data-tab="book2">2-кітап</button>
-        <button class="tab-btn" data-tab="book3">3-кітап</button>
-      </div>
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Кітапты таңдаңыз</h2>
+              <p class="section-desc">
+                Әр кітап жеке ашылады. Кітап ішінде қысқаша мазмұн, тараулар, теориялық материал,
+                негізгі терминдер және тест тапсырмалары беріледі.
+              </p>
+            </div>
+          </div>
 
-      <div id="book1" class="book-section active">
-        <div class="content-block">
-          <h3 class="mini-title">1-кітап. Физическая география Казахстана</h3>
-          <p class="lead">
-            Бұл бөлімде Қазақстан аумағының табиғи дамуы, зерттелу тарихы, геологиялық
-            негізі, жер бедері, климаттық ерекшелігі, сулары, топырағы, өсімдігі, жануарлар
-            дүниесі және физикалық-географиялық аудандастырылуы қарастырылады.
+          <div class="grid">
+            <article class="book-card" data-open="bookNaumenko">
+              <div>
+                <div class="book-number">1</div>
+                <h3>Қазақстанның физикалық географиясы</h3>
+                <p>
+                  Е.Н. Вилесов, А.А. Науменко, Л.К. Веселова, Б.Ж. Аубекеров.
+                  А.А. Науменко редакциясымен берілген оқу құралы.
+                </p>
+              </div>
+              <div class="book-meta">
+                <span class="tag">2009</span>
+                <span class="tag">ҚазҰУ</span>
+                <span class="tag">Физикалық география</span>
+              </div>
+            </article>
+
+            <article class="book-card" data-open="bookMamirova">
+              <div>
+                <div class="book-number">2</div>
+                <h3>Қазақстанның физикалық географиясы</h3>
+                <p>
+                  К.Н. Мамирова. Қазақстан аумағының табиғи компоненттері мен табиғи кешендері
+                  қарастырылатын оқу құралы.
+                </p>
+              </div>
+              <div class="book-meta">
+                <span class="tag">2015</span>
+                <span class="tag">Оқу құралы</span>
+                <span class="tag">Табиғи кешендер</span>
+              </div>
+            </article>
+
+            <article class="book-card" data-open="bookDzhanalieva">
+              <div>
+                <div class="book-number">3</div>
+                <h3>Қазақстан Республикасының физикалық географиясы</h3>
+                <p>
+                  Г.М. Джаналиева редакциясымен берілген еңбек. Қазақстан табиғатын
+                  кешенді сипаттауға арналған бөлімдер бойынша қарастырылады.
+                </p>
+              </div>
+              <div class="book-meta">
+                <span class="tag">1998</span>
+                <span class="tag">Оқу материалы</span>
+                <span class="tag">Қазақстан табиғаты</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="page" id="bookNaumenko">
+        <div class="book-hero">
+          <div class="breadcrumb">
+            <button class="back-btn" data-open="homePage">← Басты бет</button>
+            <span>1-кітап</span>
+          </div>
+
+          <h2>Қазақстанның физикалық географиясы</h2>
+          <p>
+            Бұл оқу құралында Қазақстан табиғатының қалыптасу жағдайлары мен заңдылықтары
+            өзара байланыста қарастырылады. Кітапта геологиялық құрылым, жер бедері,
+            климат, су, топырақ, өсімдік, жануарлар дүниесі және физикалық-географиялық
+            аудандастыру мәселелері жүйеленген.
           </p>
+
+          <div class="info-strip">
+            <div class="info-item">
+              <b>Авторлар</b>
+              <span>Е.Н. Вилесов, А.А. Науменко, Л.К. Веселова, Б.Ж. Аубекеров</span>
+            </div>
+            <div class="info-item">
+              <b>Жылы</b>
+              <span>2009</span>
+            </div>
+            <div class="info-item">
+              <b>Бағыты</b>
+              <span>Қазақстан табиғатының компоненттері</span>
+            </div>
+            <div class="info-item">
+              <b>Құрылымы</b>
+              <span>Тараулар бойынша оқу және тест</span>
+            </div>
+          </div>
+        </div>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">Кітап тараулары</h2>
+              <p class="section-desc">
+                Әр тарау ішінде КТА тақырыптарымен байланысқан теориялық материал,
+                терминдер және дайындық тесттері беріледі.
+              </p>
+            </div>
+          </div>
 
           <div class="chapter-grid">
-            <article class="chapter-card">
-              <div class="chapter-top">
-                <h4>Қазақстан табиғатын зерттеу кезеңдері</h4>
+            <article class="chapter-card" data-open="n-chapter-1">
+              <div>
+                <h3>1-тарау. Қазақстандағы физикалық-географиялық зерттеулердің негізгі кезеңдері</h3>
+                <p>Зерттеушілер, экспедициялар, картографиялық мәліметтер, табиғатты тану кезеңдері.</p>
               </div>
-              <p>
-                Ежелгі деректерден бастап Ресей және Қазақстан ғалымдарының кешенді
-                зерттеулеріне дейінгі негізгі кезеңдер қарастырылады.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">2-тақырып</span>
-                <span class="kta-tag">зерттелу тарихы</span>
-                <span class="kta-tag">картографиялық деректер</span>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
               </div>
-              <a href="#b1-t1" class="chapter-link">Бөлімге өту →</a>
             </article>
 
-            <article class="chapter-card">
-              <div class="chapter-top">
-                <h4>Тектоникалық-геологиялық құрылым</h4>
+            <article class="chapter-card" data-open="n-chapter-2">
+              <div>
+                <h3>2-тарау. Геологиялық құрылым және жер бедерінің қалыптасуы</h3>
+                <p>Тектоникалық негіз, геологиялық даму, жер бедері пішіндері.</p>
               </div>
-              <p>
-                Қазақстан аумағының геологиялық даму тарихы, платформалар, қатпарлы
-                аймақтар және жер қыртысының құрылымдық негіздері түсіндіріледі.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">3-тақырып</span>
-                <span class="kta-tag">геология</span>
-                <span class="kta-tag">тектоника</span>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
               </div>
-              <a href="#b1-t2" class="chapter-link">Бөлімге өту →</a>
             </article>
 
-            <article class="chapter-card">
-              <div class="chapter-top">
-                <h4>Жер бедері және орографиялық құрылым</h4>
+            <article class="chapter-card" data-open="n-chapter-3">
+              <div>
+                <h3>3-тарау. Қазақстанның жер бедері</h3>
+                <p>Жазықтар, ойпаттар, үстірттер, аласа таулар және биік тау жүйелері.</p>
               </div>
-              <p>
-                Жазықтар, ойпаттар, үстірттер, ұсақ шоқылар мен таулы жүйелердің
-                таралуы және олардың табиғи кешендерге ықпалы беріледі.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">4-тақырып</span>
-                <span class="kta-tag">жер бедері</span>
-                <span class="kta-tag">таулы аймақтар</span>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
               </div>
-              <a href="#b1-t3" class="chapter-link">Бөлімге өту →</a>
             </article>
 
-            <article class="chapter-card">
-              <div class="chapter-top">
-                <h4>Климат және климат қалыптастырушы факторлар</h4>
+            <article class="chapter-card" data-open="n-chapter-4">
+              <div>
+                <h3>4-тарау. Қазақстанның климаты</h3>
+                <p>Климат қалыптастырушы факторлар, температура, жауын-шашын, құрғақшылық.</p>
               </div>
-              <p>
-                Географиялық орны, ауа массалары, радиациялық жағдай, атмосфералық
-                айналым және құрлық ішіндегі орналасудың климатқа әсері қарастырылады.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">5-тақырып</span>
-                <span class="kta-tag">климат</span>
-                <span class="kta-tag">континенттілік</span>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
               </div>
-              <a href="#b1-t4" class="chapter-link">Бөлімге өту →</a>
             </article>
 
-            <article class="chapter-card">
-              <div class="chapter-top">
-                <h4>Ішкі сулар</h4>
+            <article class="chapter-card" data-open="n-chapter-5">
+              <div>
+                <h3>5-тарау. Қазақстанның ішкі сулары</h3>
+                <p>Өзендер, көлдер, мұздықтар, жерасты сулары және су ресурстары.</p>
               </div>
-              <p>
-                Өзендер, көлдер, мұздықтар, жер асты сулары және су ресурстарының
-                аумақ бойынша таралу ерекшеліктері талданады.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">6-тақырып</span>
-                <span class="kta-tag">өзендер</span>
-                <span class="kta-tag">көлдер</span>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
               </div>
-              <a href="#b1-t5" class="chapter-link">Бөлімге өту →</a>
             </article>
 
-            <article class="chapter-card">
-              <div class="chapter-top">
-                <h4>Топырақ, өсімдік және жануарлар дүниесі</h4>
+            <article class="chapter-card" data-open="n-chapter-6">
+              <div>
+                <h3>6-тарау. Топырақ жамылғысы</h3>
+                <p>Топырақ типтері, таралу заңдылығы, табиғи зоналармен байланысы.</p>
               </div>
-              <p>
-                Табиғат зоналары бойынша топырақ жамылғысы, өсімдік қауымдастықтары
-                және жануарлар дүниесінің таралу заңдылықтары беріледі.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">7-тақырып</span>
-                <span class="kta-tag">8-тақырып</span>
-                <span class="kta-tag">9-тақырып</span>
-                <span class="kta-tag">10-тақырып</span>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
               </div>
-              <a href="#b1-t6" class="chapter-link">Бөлімге өту →</a>
             </article>
 
-            <article class="chapter-card">
-              <div class="chapter-top">
-                <h4>Физикалық-географиялық аудандастыру</h4>
+            <article class="chapter-card" data-open="n-chapter-7">
+              <div>
+                <h3>7-тарау. Өсімдік жамылғысы</h3>
+                <p>Өсімдіктердің зоналық таралуы, орман, дала, шөл және тау өсімдіктері.</p>
               </div>
-              <p>
-                Қазақстан аумағын табиғи елдерге, облыстарға және провинцияларға бөлу
-                қағидалары мен аймақтық айырмашылықтары түсіндіріледі.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">12-тақырып</span>
-                <span class="kta-tag">аудандастыру</span>
-                <span class="kta-tag">табиғи кешен</span>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
               </div>
-              <a href="#b1-t7" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card" data-open="n-chapter-8">
+              <div>
+                <h3>8-тарау. Жануарлар дүниесі</h3>
+                <p>Жануарлардың зоналық және аймақтық таралу ерекшеліктері.</p>
+              </div>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
+              </div>
+            </article>
+
+            <article class="chapter-card" data-open="n-chapter-9">
+              <div>
+                <h3>9-тарау. Табиғат зоналары және физикалық-географиялық аудандастыру</h3>
+                <p>Табиғат кешендері, зоналық айырмашылықтар, аймақтық жіктеу.</p>
+              </div>
+              <div class="chapter-footer">
+                <span>Ашу</span>
+                <span>→</span>
+              </div>
             </article>
           </div>
-        </div>
-      </div>
+        </section>
+      </section>
 
-      <div id="book2" class="book-section">
+      <section class="page" id="n-chapter-1">
+        <div class="book-hero">
+          <div class="breadcrumb">
+            <button class="back-btn" data-open="bookNaumenko">← 1-кітапқа қайту</button>
+            <span>1-тарау</span>
+          </div>
+
+          <h2>Қазақстандағы физикалық-географиялық зерттеулердің негізгі кезеңдері</h2>
+          <p>
+            Бұл тарау Қазақстан табиғатын зерттеудің тарихи кезеңдерін, ежелгі деректерді,
+            ортағасырлық географиялық мәліметтерді, Ресей экспедицияларының еңбектерін
+            және картографиялық зерттеулердің қалыптасуын қарастырады.
+          </p>
+        </div>
+
         <div class="content-block">
-          <h3 class="mini-title">2-кітап. Физическая география Казахстана</h3>
-          <p class="lead">
-            Бұл бөлім Қазақстанның жалпы физикалық-географиялық сипаттамасын,
-            аймақтық табиғи ерекшеліктерін және қорғалатын аумақтарын жүйелі қайталауға
-            арналған.
+          <h3>Қысқаша теория</h3>
+          <p>
+            Қазақстан табиғатын ғылыми тану бірнеше кезең арқылы дамыды. Ежелгі авторлар
+            Каспий, Арал, Еділ, Жайық, Жем, Сағыз сияқты нысандар туралы алғашқы
+            мәліметтер қалдырды. Ұлы Жібек жолы Жетісу, Оңтүстік Қазақстан және
+            Орта Азия арқылы өтіп, географиялық ақпараттың таралуына ықпал етті.
           </p>
-
-          <div class="chapter-grid">
-            <article class="chapter-card">
-              <h4>Жалпы физикалық-географиялық сипаттама</h4>
-              <p>
-                Географиялық орны, шекаралары, зерттелу тарихы, геологиялық құрылымы,
-                жер бедері, климат, ішкі сулар, топырақ, өсімдік, жануарлар дүниесі және
-                табиғат зоналары қамтылады.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">1–13-тақырыптар</span>
-                <span class="kta-tag">жалпы қайталау</span>
-              </div>
-              <a href="#b2-t1" class="chapter-link">Бөлімге өту →</a>
-            </article>
-
-            <article class="chapter-card">
-              <h4>Аймақтық физикалық-географиялық ерекшеліктер</h4>
-              <p>
-                Шығыс Еуропа жазығы, Мұғалжар, Солтүстік Қазақстан жазығы, Сарыарқа,
-                Тұран жазығы, Алтай, Сауыр-Тарбағатай, Жетісу Алатауы және Тянь-Шань
-                табиғи аймақтары қарастырылады.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">12-тақырып</span>
-                <span class="kta-tag">13-тақырып</span>
-                <span class="kta-tag">аймақтық география</span>
-              </div>
-              <a href="#b2-t2" class="chapter-link">Бөлімге өту →</a>
-            </article>
-
-            <article class="chapter-card">
-              <h4>Қазақстан қорықтары</h4>
-              <p>
-                Ерекше қорғалатын табиғи аумақтар, қорықтардың табиғатты қорғаудағы
-                орны және табиғи кешендерді сақтау маңызы түсіндіріледі.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">11-тақырып</span>
-                <span class="kta-tag">13-тақырып</span>
-                <span class="kta-tag">қорғалатын аумақтар</span>
-              </div>
-              <a href="#b2-t3" class="chapter-link">Бөлімге өту →</a>
-            </article>
-          </div>
+          <p>
+            Орта ғасырларда араб ғалымдары Арал, Каспий, Сырдария маңы, Жетісу және
+            Приарал өңірі туралы деректер жинады. Кейін Ресей экспедициялары Қазақстан
+            аумағын жүйелі зерттеп, өзендер, көлдер, таулар, жазықтар мен табиғи
+            жағдайлар жөнінде нақты мәліметтер қалыптастырды.
+          </p>
         </div>
-      </div>
 
-      <div id="book3" class="book-section">
         <div class="content-block">
-          <h3 class="mini-title">3-кітап. Физическая география Республики Казахстан</h3>
-          <p class="lead">
-            Бұл бөлім Қазақстан Республикасының физикалық-географиялық ерекшеліктерін,
-            табиғи компоненттердің өзара байланысын және КТА тақырыптарымен сабақтас
-            негізгі ұғымдарды қайталауға арналған.
+          <h3>Негізгі терминдер</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Физикалық-географиялық зерттеу</b>
+              <span>Табиғи компоненттер мен табиғи кешендердің қалыптасуын, таралуын және өзара байланысын зерттеу.</span>
+            </div>
+            <div class="term">
+              <b>Картографиялық дерек</b>
+              <span>Аумақтың географиялық нысандарын карта арқылы бейнелейтін ғылыми мәлімет.</span>
+            </div>
+            <div class="term">
+              <b>Экспедиция</b>
+              <span>Белгілі бір аумақты ғылыми мақсатта зерттеу үшін ұйымдастырылған сапар.</span>
+            </div>
+            <div class="term">
+              <b>Табиғи нысан</b>
+              <span>Өзен, көл, тау, жазық, теңіз, шөл, орман сияқты табиғатта қалыптасқан географиялық объект.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Тест тапсырмалары</h3>
+
+          <div class="test-box">
+            <div class="question" data-answer="B">
+              <h4>1. Қазақстанның батыс бөлігінің табиғи жағдайлары туралы алғашқы мәліметтер қай ежелгі авторлардың еңбектерінде кездеседі?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n1q1" value="A"> А) Плано Карпини, Рубрук, Ремезов</label>
+                <label class="option"><input type="radio" name="n1q1" value="B"> B) Геродот, Страбон, Птолемей</label>
+                <label class="option"><input type="radio" name="n1q1" value="C"> C) Паллас, Лепехин, Фальк</label>
+                <label class="option"><input type="radio" name="n1q1" value="D"> D) Карелин, Левшин, Шренк</label>
+                <label class="option"><input type="radio" name="n1q1" value="E"> E) Бутаков, Макшеев, Поспелов</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: B. Ежелгі грек ғалымдары Геродот, Страбон және Птолемей Қазақстанның батыс бөлігі, Каспий мен Арал маңы туралы алғашқы деректер қалдырған.
+              </div>
+            </div>
+
+            <div class="question" data-answer="D">
+              <h4>2. Қазақстан арқылы өткен Ұлы Жібек жолының географиялық маңызы қандай болды?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n1q2" value="A"> А) Мұздықтардың таралуын алғаш анықтады</label>
+                <label class="option"><input type="radio" name="n1q2" value="B"> B) Тектоникалық карталарды толық қалыптастырды</label>
+                <label class="option"><input type="radio" name="n1q2" value="C"> C) Каспий теңізінің деңгейін өлшеуді бастады</label>
+                <label class="option"><input type="radio" name="n1q2" value="D"> D) Шығыс пен Батыс арасында географиялық ақпарат таралуына ықпал етті</label>
+                <label class="option"><input type="radio" name="n1q2" value="E"> E) Қазақстанның барлық табиғат зоналарын картаға түсірді</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: D. Ұлы Жібек жолы сауда жолы ғана емес, географиялық мәліметтердің таралуына әсер еткен байланыс арнасы болды.
+              </div>
+            </div>
+
+            <div class="question" data-answer="A">
+              <h4>3. Арал мен Каспий өңірін сипаттаған ортағасырлық ғалымдардың қатарына кім жатады?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n1q3" value="A"> А) Әл-Бируни</label>
+                <label class="option"><input type="radio" name="n1q3" value="B"> B) Ф. Геблер</label>
+                <label class="option"><input type="radio" name="n1q3" value="C"> C) А. Гумбольдт</label>
+                <label class="option"><input type="radio" name="n1q3" value="D"> D) П.С. Паллас</label>
+                <label class="option"><input type="radio" name="n1q3" value="E"> E) Г.С. Карелин</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: A. Әл-Бируни Арал мен Каспийге қатысты маңызды географиялық сипаттамалар берген ортағасырлық ғалымдардың бірі.
+              </div>
+            </div>
+
+            <button class="check-btn" data-check>Жауаптарды тексеру</button>
+          </div>
+        </div>
+      </section>
+            <section class="page" id="n-chapter-2">
+        <div class="book-hero">
+          <div class="breadcrumb">
+            <button class="back-btn" data-open="bookNaumenko">← 1-кітапқа қайту</button>
+            <span>2-тарау</span>
+          </div>
+
+          <h2>Геологиялық құрылым, палеогеография және пайдалы қазбалар</h2>
+          <p>
+            Бұл тарау Қазақстан аумағының геологиялық даму тарихын, тектоникалық
+            негізін, палеогеографиялық өзгерістерін және пайдалы қазбалардың
+            қалыптасу заңдылықтарын түсіндіреді.
           </p>
-
-          <div class="chapter-grid">
-            <article class="chapter-card">
-              <h4>Қазақстан аумағының табиғи негіздері</h4>
-              <p>
-                Географиялық орны, аумақтық ерекшелік, жер бедері мен табиғи жағдайлардың
-                қалыптасуындағы негізгі факторлар қарастырылады.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">1-тақырып</span>
-                <span class="kta-tag">3-тақырып</span>
-                <span class="kta-tag">4-тақырып</span>
-              </div>
-              <a href="#b3-t1" class="chapter-link">Бөлімге өту →</a>
-            </article>
-
-            <article class="chapter-card">
-              <h4>Климат, сулар және табиғи ресурстар</h4>
-              <p>
-                Климаттың континенттік сипаты, ішкі сулардың таралуы және табиғи
-                ресурстардың аумақтық айырмашылықтары жүйеленеді.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">5-тақырып</span>
-                <span class="kta-tag">6-тақырып</span>
-                <span class="kta-tag">13-тақырып</span>
-              </div>
-              <a href="#b3-t2" class="chapter-link">Бөлімге өту →</a>
-            </article>
-
-            <article class="chapter-card">
-              <h4>Табиғат зоналары және аудандастыру</h4>
-              <p>
-                Қазақстан табиғатының зоналық өзгерісі, табиғи кешендердің таралуы және
-                физикалық-географиялық аудандастыру ұстанымдары беріледі.
-              </p>
-              <div class="tag-row">
-                <span class="kta-tag">10-тақырып</span>
-                <span class="kta-tag">12-тақырып</span>
-                <span class="kta-tag">табиғи кешен</span>
-              </div>
-              <a href="#b3-t3" class="chapter-link">Бөлімге өту →</a>
-            </article>
-          </div>
         </div>
-      </div>
-    </section>
 
-    <section id="practice" class="section page">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title">Тақырыптық тесттер</h2>
-          <p class="section-subtitle">
-            Әр тест белгілі бір кітап бөліміне және КТА тақырыбына сүйенеді. Жауапты
-            таңдағаннан кейін тексеру батырмасын басыңыз.
+        <div class="content-block">
+          <h3>Қысқаша теория</h3>
+          <p>
+            Қазақстан аумағының геологиялық құрылымы әртүрлі жастағы платформалық,
+            қатпарлы және таулы құрылымдардың қатар орналасуымен ерекшеленеді.
+            Ел аумағында ежелгі платформалық бөліктер, палеозойлық қатпарлы аймақтар,
+            мезозой-кайнозой шөгінді жамылғылары және жас тектоникалық қозғалыстар
+            әсерінен қалыптасқан таулы жүйелер кездеседі.
+          </p>
+          <p>
+            Тектоникалық-геологиялық құрылым жер бедерінің негізгі пішіндерін,
+            пайдалы қазбалардың таралуын және табиғи кешендердің қалыптасу бағытын
+            анықтайды. Қазақстандағы кен орындарының орналасуы көбіне геологиялық
+            даму тарихымен, магмалық, метаморфтық және шөгінді процестермен байланысты.
           </p>
         </div>
-      </div>
 
-      <div id="b1-t1" class="content-block">
-        <h3 class="mini-title">1-кітап · Қазақстан табиғатын зерттеу кезеңдері</h3>
-        <p class="lead">
-          Бұл бөлімде Қазақстан аумағы туралы алғашқы географиялық мәліметтер,
-          картографиялық деректер, саяхатшылар мен ғылыми экспедициялардың үлесі
-          қарастырылады.
-        </p>
-
-        <div class="info-grid">
-          <div class="note">
-            <h5>Негізгі ойлар</h5>
-            <ul>
-              <li>Қазақстан табиғаты туралы алғашқы деректер ежелгі және ортағасырлық еңбектерде кездеседі.</li>
-              <li>Ұлы Жібек жолы географиялық ақпарат алмасуға ықпал етті.</li>
-              <li>Араб ғалымдары Каспий, Арал, Сырдария маңы және Жетісу туралы мәліметтер қалдырды.</li>
-              <li>Кейінгі кезеңде карталар, әскери-саяси экспедициялар және ғылыми қоғамдар маңызды рөл атқарды.</li>
-            </ul>
-          </div>
-
-          <div class="note">
-            <h5>Терминдер</h5>
-            <div class="term-list">
-              <div class="term"><b>Картографиялық дерек</b> — аумақ туралы карта арқылы берілетін географиялық мәлімет.</div>
-              <div class="term"><b>Экспедиция</b> — белгілі бір аумақты зерттеу мақсатындағы ғылыми сапар.</div>
-              <div class="term"><b>Физикалық-географиялық зерттеу</b> — табиғи компоненттерді кешенді қарастыру.</div>
+        <div class="content-block">
+          <h3>КТА тақырыптарымен байланысы</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Қазақстанның тектоникалық-геологиялық құрылымы</b>
+              <span>Қатпарлы аймақтар, платформалар, геологиялық даму кезеңдері.</span>
+            </div>
+            <div class="term">
+              <b>Қазақстанның жер бедері</b>
+              <span>Геологиялық негіз бен рельеф пішіндерінің байланысы.</span>
+            </div>
+            <div class="term">
+              <b>Қазақстанның табиғат ресурстары</b>
+              <span>Пайдалы қазбалардың геологиялық құрылыммен байланысы.</span>
+            </div>
+            <div class="term">
+              <b>Физикалық-географиялық аудандастыру</b>
+              <span>Табиғи кешендердің геологиялық және морфологиялық негіздері.</span>
             </div>
           </div>
         </div>
 
-        <div class="quiz-wrap" data-quiz="b1-history">
-          <article class="question-card" data-answer="B">
-            <div class="question-head">
-              <span class="q-num">1-сұрақ</span>
-              <h5>Қазақстан аумағының батыс бөлігі туралы алғашқы мәліметтер кімдердің еңбектерінде кездеседі?</h5>
+        <div class="content-block">
+          <h3>Негізгі терминдер</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Платформа</b>
+              <span>Геологиялық дамуы салыстырмалы тұрақты, іргетасы мен шөгінді жамылғысы бар ірі құрылым.</span>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1h1" value="A"> А) П.С. Паллас, И.И. Лепехин, И.П. Фальк</label>
-              <label class="option"><input type="radio" name="b1h1" value="B"> B) Геродот, Страбон, Птолемей</label>
-              <label class="option"><input type="radio" name="b1h1" value="C"> C) И.К. Кирилов, В.Н. Татищев, Д. Эльтон</label>
-              <label class="option"><input type="radio" name="b1h1" value="D"> D) Г.С. Карелин, А. Гумбольдт, Н.И. Потанин</label>
-              <label class="option"><input type="radio" name="b1h1" value="E"> E) А.И. Бутаков, А.И. Макшеев, К.Е. Поспелов</label>
+            <div class="term">
+              <b>Қатпарлы аймақ</b>
+              <span>Тектоникалық қозғалыстар нәтижесінде тау түзілу процестері жүрген геологиялық белдеу.</span>
             </div>
-            <div class="result" data-explain="Ежелгі грек авторлары Қазақстанның батысындағы Каспий, Арал, Еділ, Жайық маңы туралы алғашқы үзік мәліметтер қалдырған."></div>
-          </article>
-
-          <article class="question-card" data-answer="D">
-            <div class="question-head">
-              <span class="q-num">2-сұрақ</span>
-              <h5>Орта ғасырларда Жетісу, Қазақстанның оңтүстігі және Орта Азия арқылы өткен жолдың географиялық ақпарат алмасудағы маңызы қандай болды?</h5>
+            <div class="term">
+              <b>Палеогеография</b>
+              <span>Өткен геологиялық дәуірлердегі табиғи жағдайларды зерттейтін бағыт.</span>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1h2" value="A"> А) Мұздықтардың биіктік белдеулерін анықтады</label>
-              <label class="option"><input type="radio" name="b1h2" value="B"> B) Тектоникалық карталардың жүйесін жасады</label>
-              <label class="option"><input type="radio" name="b1h2" value="C"> C) Топырақ типтерін толық жіктеді</label>
-              <label class="option"><input type="radio" name="b1h2" value="D"> D) Шығыс пен Батыс арасында мәлімет таратуға жағдай жасады</label>
-              <label class="option"><input type="radio" name="b1h2" value="E"> E) Өнеркәсіптік аудандардың шекарасын белгіледі</label>
-            </div>
-            <div class="result" data-explain="Ұлы Жібек жолы саудамен бірге табиғат, жер бедері, өзен-көлдер және елді мекендер туралы мәліметтердің таралуына ықпал етті."></div>
-          </article>
-
-          <article class="question-card" data-answer="C">
-            <div class="question-head">
-              <span class="q-num">3-сұрақ</span>
-              <h5>Араб ғалымдары Қазақстан аумағын зерттеуде қай бағыттағы мәліметтерді көбірек қалдырды?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1h3" value="A"> А) Мұғалжар мен Алтайдың пайдалы қазбалары</label>
-              <label class="option"><input type="radio" name="b1h3" value="B"> B) Солтүстік Қазақстанның орманды дала топырағы</label>
-              <label class="option"><input type="radio" name="b1h3" value="C"> C) Каспий, Арал, Сырдария маңы және Жетісу өңірі</label>
-              <label class="option"><input type="radio" name="b1h3" value="D"> D) Қаратау мен Тянь-Шань мұздықтарының қозғалысы</label>
-              <label class="option"><input type="radio" name="b1h3" value="E"> E) Сарыарқаның қазіргі экологиялық аудандары</label>
-            </div>
-            <div class="result" data-explain="Араб авторлары Каспий, Арал, Сырдария төменгі ағысы, Приаралье және Жетісу туралы географиялық сипаттамалар берген."></div>
-          </article>
-
-          <article class="question-card" data-answer="A">
-            <div class="question-head">
-              <span class="q-num">4-сұрақ</span>
-              <h5>«Книга Большому Чертежу» еңбегінің Қазақстан географиясын зерттеудегі маңызы немен байланысты?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1h4" value="A"> А) Қазақстан аумағындағы бірқатар географиялық нысандарды картада көрсетуімен</label>
-              <label class="option"><input type="radio" name="b1h4" value="B"> B) Қазақстан климатын атмосфералық айналым бойынша жіктеуімен</label>
-              <label class="option"><input type="radio" name="b1h4" value="C"> C) Тянь-Шань мұздықтарының қазіргі ауданын есептеуімен</label>
-              <label class="option"><input type="radio" name="b1h4" value="D"> D) Қазақстан топырағын ендік зоналар бойынша сипаттауымен</label>
-              <label class="option"><input type="radio" name="b1h4" value="E"> E) Геоэкологиялық аудандастырудың толық жүйесін ұсынуымен</label>
-            </div>
-            <div class="result" data-explain="Бұл еңбек Ресей мемлекеті картасымен байланысты болып, Қазақстан аумағындағы өзен, тау, теңіз және басқа нысандар жөніндегі мәліметтерді сақтаған."></div>
-          </article>
-
-          <article class="question-card" data-answer="E">
-            <div class="question-head">
-              <span class="q-num">5-сұрақ</span>
-              <h5>С.У. Ремезовтің «Чертежная книга Сибири» еңбегі қандай бағыттағы зерттеудің басталуын көрсетеді?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1h5" value="A"> А) Палеогеографиялық кезеңдерді салыстыру</label>
-              <label class="option"><input type="radio" name="b1h5" value="B"> B) Климаттық белдеулерді сандық талдау</label>
-              <label class="option"><input type="radio" name="b1h5" value="C"> C) Өнеркәсіп орталықтарын экономикалық бөлу</label>
-              <label class="option"><input type="radio" name="b1h5" value="D"> D) Шөлейт ландшафттарын геоэкологиялық бағалау</label>
-              <label class="option"><input type="radio" name="b1h5" value="E"> E) Қазақстан аумағын картографиялық зерттеу</label>
-            </div>
-            <div class="result" data-explain="Ремезов атласы Балқаш, Алакөл, Зайсан, Іле, Шу, Сырдария, Тянь-Шань, Тарбағатай сияқты нысандарды көрсетуімен маңызды."></div>
-          </article>
-
-          <div class="quiz-actions">
-            <button class="check-btn" data-check="b1-history">Жауаптарды тексеру</button>
-            <button class="reset-btn" data-reset="b1-history">Қайта белгілеу</button>
-          </div>
-
-          <div class="score-box" data-score="b1-history"></div>
-        </div>
-      </div>
-            <div id="b1-t0" class="content-block">
-        <h3 class="mini-title">1-кітап · Қазақстанның географиялық орны, аумағы және шекарасы</h3>
-        <p class="lead">
-          Бұл бөлімде Қазақстанның Еуразия материгіндегі орны, аумағының көлемі,
-          шекаралық орналасуы, батыстан шығысқа және солтүстіктен оңтүстікке созылуы,
-          сондай-ақ ішкі материктік жағдайының табиғи үдерістерге әсері қарастырылады.
-        </p>
-
-        <div class="info-grid">
-          <div class="note">
-            <h5>Негізгі ойлар</h5>
-            <ul>
-              <li>Қазақстан Еуразия материгінің орталық бөлігінде орналасқан.</li>
-              <li>Аумағының үлкендігі табиғи жағдайлардың алуан түрлі болуына әсер етеді.</li>
-              <li>Ішкі материктік орналасу климаттың континенттілігі мен қуаңдығын күшейтеді.</li>
-              <li>Жазықтардың басым болуы мен шығыс, оңтүстік-шығыстағы таулы жүйелер табиғи айырмашылықтарды қалыптастырады.</li>
-            </ul>
-          </div>
-
-          <div class="note">
-            <h5>Терминдер</h5>
-            <div class="term-list">
-              <div class="term"><b>Географиялық орын</b> — аумақтың материк, мұхит, ендік, бойлық және көрші елдерге қатысты орналасуы.</div>
-              <div class="term"><b>Ішкі материктік жағдай</b> — мұхиттардан алыс орналасқан құрлықтық аумақтың табиғи ерекшелігі.</div>
-              <div class="term"><b>Континенттілік</b> — климаттың құрғақ, температура амплитудасы жоғары сипатта болуы.</div>
+            <div class="term">
+              <b>Пайдалы қазба</b>
+              <span>Шаруашылықта қолданылатын табиғи минералдық шикізат немесе тау жынысы.</span>
             </div>
           </div>
         </div>
 
-        <div class="quiz-wrap" data-quiz="b1-position">
-          <article class="question-card" data-answer="C">
-            <div class="question-head">
-              <span class="q-num">1-сұрақ</span>
-              <h5>Қазақстанның табиғи жағдайларының алуан түрлі болуына ең алдымен қандай кеңістіктік ерекшелік әсер етеді?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1p1" value="A"> А) Өзен торының біркелкі орналасуы</label>
-              <label class="option"><input type="radio" name="b1p1" value="B"> B) Жауын-шашынның маусымдық таралуы</label>
-              <label class="option"><input type="radio" name="b1p1" value="C"> C) Аумағының кеңдігі мен ендік бағытта созылуы</label>
-              <label class="option"><input type="radio" name="b1p1" value="D"> D) Орман алқаптарының оңтүстікте басым болуы</label>
-              <label class="option"><input type="radio" name="b1p1" value="E"> E) Таулы мұздықтардың жазықта таралуы</label>
-            </div>
-            <div class="result" data-explain="Қазақстан аумағының өте үлкен болуы және әртүрлі ендіктерде орналасуы табиғи жағдайлардың солтүстіктен оңтүстікке қарай өзгеруіне негіз болады."></div>
-          </article>
+        <div class="content-block">
+          <h3>Тест тапсырмалары</h3>
 
-          <article class="question-card" data-answer="A">
-            <div class="question-head">
-              <span class="q-num">2-сұрақ</span>
-              <h5>Қазақстан климатының қуаң әрі континентті болуын түсіндіретін негізгі географиялық себеп қайсы?</h5>
+          <div class="test-box">
+            <div class="question" data-answer="C">
+              <h4>1. Қазақстан жер бедерінің ірі пішіндерінің қалыптасуына тікелей әсер ететін негіз қандай?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n2q1" value="A"> А) Өсімдік жамылғысының маусымдық өзгерісі</label>
+                <label class="option"><input type="radio" name="n2q1" value="B"> B) Атмосфералық жауын-шашынның таралуы</label>
+                <label class="option"><input type="radio" name="n2q1" value="C"> C) Тектоникалық-геологиялық құрылым</label>
+                <label class="option"><input type="radio" name="n2q1" value="D"> D) Топырақ қабатының механикалық құрамы</label>
+                <label class="option"><input type="radio" name="n2q1" value="E"> E) Өзен аңғарларының маусымдық режимі</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: C. Жер бедерінің ірі пішіндері аумақтың тектоникалық-геологиялық негізімен тығыз байланысты қалыптасады.
+              </div>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1p2" value="A"> А) Мұхиттардан алыс, құрлық ішінде орналасуы</label>
-              <label class="option"><input type="radio" name="b1p2" value="B"> B) Ылғалды ауа массаларының тұрақты басым болуы</label>
-              <label class="option"><input type="radio" name="b1p2" value="C"> C) Экваторлық белдеуге жақын орналасуы</label>
-              <label class="option"><input type="radio" name="b1p2" value="D"> D) Жер бедерінің түгелдей таулы болуы</label>
-              <label class="option"><input type="radio" name="b1p2" value="E"> E) Теңіздік ағыстардың тікелей ықпалы</label>
-            </div>
-            <div class="result" data-explain="Қазақстан Еуразияның ішкі бөлігінде орналасқандықтан, мұхиттық ылғалдың әсері әлсірейді, сондықтан климат қуаң және континентті сипат алады."></div>
-          </article>
 
-          <article class="question-card" data-answer="D">
-            <div class="question-head">
-              <span class="q-num">3-сұрақ</span>
-              <h5>Қазақстан аумағында жазықтар мен таулы аймақтардың орналасуындағы негізгі ерекшелік қалай сипатталады?</h5>
+            <div class="question" data-answer="A">
+              <h4>2. Палеогеография нені зерттейді?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n2q2" value="A"> А) Өткен геологиялық дәуірлердегі табиғи жағдайларды</label>
+                <label class="option"><input type="radio" name="n2q2" value="B"> B) Қазіргі өзендердің жылдық су шығынын</label>
+                <label class="option"><input type="radio" name="n2q2" value="C"> C) Қалалардың экономикалық мамандануын</label>
+                <label class="option"><input type="radio" name="n2q2" value="D"> D) Климаттық белдеулердің қазіргі шекарасын</label>
+                <label class="option"><input type="radio" name="n2q2" value="E"> E) Топырақтың агрохимиялық құнарлылығын</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: A. Палеогеография өткен геологиялық кезеңдердегі жер бедері, климат, теңіздер, құрлықтар және табиғи орта жағдайларын қарастырады.
+              </div>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1p3" value="A"> А) Таулар батыста, жазықтар шығыста шоғырланған</label>
-              <label class="option"><input type="radio" name="b1p3" value="B"> B) Биік таулар солтүстік жазықтарды толық қоршайды</label>
-              <label class="option"><input type="radio" name="b1p3" value="C"> C) Жазықтар тек оңтүстік шөлдермен шектеледі</label>
-              <label class="option"><input type="radio" name="b1p3" value="D"> D) Жазықтар басым, таулар шығыс пен оңтүстік-шығыста орналасқан</label>
-              <label class="option"><input type="radio" name="b1p3" value="E"> E) Таулы белдеулер орталық бөлікте тұтас жүйе құрайды</label>
+
+            <div class="question" data-answer="D">
+              <h4>3. Пайдалы қазбалардың аумақ бойынша әркелкі таралуы көбіне немен түсіндіріледі?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n2q3" value="A"> А) Өзендердің қоректену түрлерімен</label>
+                <label class="option"><input type="radio" name="n2q3" value="B"> B) Табиғат зоналарының ендік ауысуымен</label>
+                <label class="option"><input type="radio" name="n2q3" value="C"> C) Жауын-шашын мөлшерінің маусымдылығымен</label>
+                <label class="option"><input type="radio" name="n2q3" value="D"> D) Геологиялық даму тарихы мен тау жыныстарының құрамымен</label>
+                <label class="option"><input type="radio" name="n2q3" value="E"> E) Өсімдіктердің биіктік белдеулік таралуымен</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: D. Кен орындарының таралуы геологиялық даму, магмалық және шөгінді процестер, тау жыныстарының құрамы арқылы анықталады.
+              </div>
             </div>
-            <div class="result" data-explain="Қазақстан аумағының көп бөлігін жазықтар алып жатыр, ал биік таулы жүйелер негізінен шығыс және оңтүстік-шығыс бөліктерде орналасқан."></div>
-          </article>
 
-          <article class="question-card" data-answer="B">
-            <div class="question-head">
-              <span class="q-num">4-сұрақ</span>
-              <h5>Қазақстанның физикалық-географиялық орны табиғат зоналарының таралуына қалай әсер етеді?</h5>
+            <div class="question" data-answer="B">
+              <h4>4. Қатпарлы аймақтарға тән негізгі белгі қайсы?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n2q4" value="A"> А) Геологиялық қозғалыстың толық тоқтауы</label>
+                <label class="option"><input type="radio" name="n2q4" value="B"> B) Тау түзілу процестерімен байланысты құрылымдардың дамуы</label>
+                <label class="option"><input type="radio" name="n2q4" value="C"> C) Жазық беткейлердің көлдік шөгінділермен жабылуы</label>
+                <label class="option"><input type="radio" name="n2q4" value="D"> D) Қазіргі мұздықтардың барлық аумақты басуы</label>
+                <label class="option"><input type="radio" name="n2q4" value="E"> E) Топырақ жамылғысының зоналық алмасуы</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: B. Қатпарлы аймақтарда тектоникалық қозғалыстар күшейіп, тау түзілу мен күрделі геологиялық құрылымдар қалыптасады.
+              </div>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1p4" value="A"> А) Барлық табиғат зоналарын бірдей ылғалдандырады</label>
-              <label class="option"><input type="radio" name="b1p4" value="B"> B) Солтүстіктен оңтүстікке қарай зоналық ауысуды қалыптастырады</label>
-              <label class="option"><input type="radio" name="b1p4" value="C"> C) Шөл зонасын тек таулы аудандарда дамытады</label>
-              <label class="option"><input type="radio" name="b1p4" value="D"> D) Орманды белдеуді Каспий маңына ығыстырады</label>
-              <label class="option"><input type="radio" name="b1p4" value="E"> E) Биіктік белдеулерді жазық аумақтарда күшейтеді</label>
-            </div>
-            <div class="result" data-explain="Ендік бойынша созылу және климаттың қуаңдануы табиғат зоналарының орманды дала, дала, шөлейт, шөл бағытында ауысуына әсер етеді."></div>
-          </article>
 
-          <article class="question-card" data-answer="E">
-            <div class="question-head">
-              <span class="q-num">5-сұрақ</span>
-              <h5>Қазақстанның ішкі материктік орны физикалық-географиялық үдерістерге қандай сипат береді?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1p5" value="A"> А) Теңіздік ылғалдың жыл бойы тұрақты болуын күшейтеді</label>
-              <label class="option"><input type="radio" name="b1p5" value="B"> B) Жауын-шашынның барлық аймақта біркелкі түсуін қамтамасыз етеді</label>
-              <label class="option"><input type="radio" name="b1p5" value="C"> C) Мұздықтардың шөлдерде кең таралуына жағдай жасайды</label>
-              <label class="option"><input type="radio" name="b1p5" value="D"> D) Өзендердің түгелдей мұхит алаптарына құюын анықтайды</label>
-              <label class="option"><input type="radio" name="b1p5" value="E"> E) Құрғақшылық, температура айырмасы және ылғал тапшылығын арттырады</label>
-            </div>
-            <div class="result" data-explain="Құрлықтың ішкі бөлігінде орналасу ауа температурасының маусымдық айырмасын арттырып, ылғалдың жетіспеуіне және қуаң ландшафттардың кең таралуына ықпал етеді."></div>
-          </article>
-
-          <div class="quiz-actions">
-            <button class="check-btn" data-check="b1-position">Жауаптарды тексеру</button>
-            <button class="reset-btn" data-reset="b1-position">Қайта белгілеу</button>
-          </div>
-
-          <div class="score-box" data-score="b1-position"></div>
-        </div>
-      </div>
-
-      <div id="b1-t2" class="content-block">
-        <h3 class="mini-title">1-кітап · Қазақстанның тектоникалық-геологиялық құрылымы</h3>
-        <p class="lead">
-          Бұл бөлімде Қазақстан аумағының жер қыртысы дамуы, тектоникалық бірліктері,
-          платформалық және қатпарлы құрылымдары, геологиялық тарихтың жер бедерімен
-          байланысы қарастырылады.
-        </p>
-
-        <div class="info-grid">
-          <div class="note">
-            <h5>Негізгі ойлар</h5>
-            <ul>
-              <li>Қазақстан жер қыртысы әртүрлі жастағы геологиялық құрылымдардан тұрады.</li>
-              <li>Платформалық аймақтар мен қатпарлы белдеулер жер бедерінің ірі пішіндерін қалыптастырады.</li>
-              <li>Тектоникалық даму пайдалы қазбалардың таралуымен тығыз байланысты.</li>
-              <li>Геологиялық құрылым табиғи кешендердің ұзақ уақыттағы қалыптасу негізін көрсетеді.</li>
-            </ul>
-          </div>
-
-          <div class="note">
-            <h5>Терминдер</h5>
-            <div class="term-list">
-              <div class="term"><b>Платформа</b> — жер қыртысының салыстырмалы тұрақты, ежелгі немесе жас құрылымдық бөлігі.</div>
-              <div class="term"><b>Қатпарлы аймақ</b> — тау түзілу қозғалыстары әсерінен күрделенген тектоникалық белдеу.</div>
-              <div class="term"><b>Тектоникалық құрылым</b> — жер қыртысының ішкі құрылысы мен даму ерекшелігін білдіретін жүйе.</div>
-            </div>
+            <button class="check-btn" data-check>Жауаптарды тексеру</button>
           </div>
         </div>
+      </section>
 
-        <div class="quiz-wrap" data-quiz="b1-tectonics">
-          <article class="question-card" data-answer="A">
-            <div class="question-head">
-              <span class="q-num">1-сұрақ</span>
-              <h5>Қазақстанның тектоникалық-геологиялық құрылымын оқуда негізгі назар қандай байланысқа аударылады?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1t1" value="A"> А) Жер қыртысы құрылысы, геологиялық даму және жер бедері байланысына</label>
-              <label class="option"><input type="radio" name="b1t1" value="B"> B) Жел бағыты, ауа ылғалдылығы және бұлттылық байланысына</label>
-              <label class="option"><input type="radio" name="b1t1" value="C"> C) Өзен режимі, көл деңгейі және мұз қату байланысына</label>
-              <label class="option"><input type="radio" name="b1t1" value="D"> D) Өсімдік жамылғысы, жайылым және орман байланысына</label>
-              <label class="option"><input type="radio" name="b1t1" value="E"> E) Халық тығыздығы, қала жүйесі және көлік байланысына</label>
-            </div>
-            <div class="result" data-explain="Тектоникалық-геологиялық құрылым жер қыртысының дамуын, жер бедерінің негізін және пайдалы қазбалардың таралуын түсіндіреді."></div>
-          </article>
-
-          <article class="question-card" data-answer="D">
-            <div class="question-head">
-              <span class="q-num">2-сұрақ</span>
-              <h5>Платформалық құрылымдарға тән белгі қайсы?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1t2" value="A"> А) Қазіргі мұздықтардың биікте шоғырлануы</label>
-              <label class="option"><input type="radio" name="b1t2" value="B"> B) Атмосфералық фронттардың жиі ауысуы</label>
-              <label class="option"><input type="radio" name="b1t2" value="C"> C) Өзендердің көктемгі тасуымен ерекшеленуі</label>
-              <label class="option"><input type="radio" name="b1t2" value="D"> D) Жер қыртысының салыстырмалы тұрақты бөлігі болуы</label>
-              <label class="option"><input type="radio" name="b1t2" value="E"> E) Биіктік белдеулердің айқын қалыптасуы</label>
-            </div>
-            <div class="result" data-explain="Платформа — ұзақ геологиялық даму барысында салыстырмалы тұрақтылығымен ерекшеленетін жер қыртысының ірі құрылымы."></div>
-          </article>
-
-          <article class="question-card" data-answer="B">
-            <div class="question-head">
-              <span class="q-num">3-сұрақ</span>
-              <h5>Қатпарлы аймақтар Қазақстан табиғатының қай компонентінің қалыптасуында ерекше байқалады?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1t3" value="A"> А) Жазықтағы қар жамылғысының маусымдық қалыңдығында</label>
-              <label class="option"><input type="radio" name="b1t3" value="B"> B) Таулы жүйелер мен күрделі орографиялық құрылымдарда</label>
-              <label class="option"><input type="radio" name="b1t3" value="C"> C) Көлдердің тұздылық көрсеткіштерінің тәуліктік өзгерісінде</label>
-              <label class="option"><input type="radio" name="b1t3" value="D"> D) Шөл өсімдіктерінің вегетациялық мерзімінде</label>
-              <label class="option"><input type="radio" name="b1t3" value="E"> E) Өзендердің мұз құрсауынан босау уақытында</label>
-            </div>
-            <div class="result" data-explain="Қатпарлы белдеулер тау түзілу үдерістерімен байланысты болғандықтан, олар таулы жер бедерінің қалыптасуында айқын көрінеді."></div>
-          </article>
-
-          <article class="question-card" data-answer="E">
-            <div class="question-head">
-              <span class="q-num">4-сұрақ</span>
-              <h5>Геологиялық құрылым мен пайдалы қазбалардың таралуы арасындағы байланыс қалай түсіндіріледі?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1t4" value="A"> А) Пайдалы қазбалар тек қазіргі климатқа тәуелді таралады</label>
-              <label class="option"><input type="radio" name="b1t4" value="B"> B) Кен орындары тек өзен аңғарларында қалыптасады</label>
-              <label class="option"><input type="radio" name="b1t4" value="C"> C) Минералдық ресурстар өсімдік зонасымен ғана анықталады</label>
-              <label class="option"><input type="radio" name="b1t4" value="D"> D) Кендердің орналасуы жауын-шашын мөлшеріне ғана байланысты</label>
-              <label class="option"><input type="radio" name="b1t4" value="E"> E) Кен байлықтары жер қыртысының даму тарихымен байланысты қалыптасады</label>
-            </div>
-            <div class="result" data-explain="Пайдалы қазбалардың пайда болуы мен таралуы геологиялық кезеңдер, магмалық, шөгінді және метаморфтық үдерістермен байланысты."></div>
-          </article>
-
-          <article class="question-card" data-answer="C">
-            <div class="question-head">
-              <span class="q-num">5-сұрақ</span>
-              <h5>Тектоникалық-геологиялық тақырып КТА құрылымында неге күрделі деңгейге жатады?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1t5" value="A"> А) Ол тек әкімшілік облыстарды жаттауға негізделеді</label>
-              <label class="option"><input type="radio" name="b1t5" value="B"> B) Ол жануарлар ареалын ғана салыстыруды қажет етеді</label>
-              <label class="option"><input type="radio" name="b1t5" value="C"> C) Ол геологиялық уақыт, құрылым және жер бедерін бірге талдауды талап етеді</label>
-              <label class="option"><input type="radio" name="b1t5" value="D"> D) Ол елді мекендердің орналасуын сипаттаумен шектеледі</label>
-              <label class="option"><input type="radio" name="b1t5" value="E"> E) Ол жауын-шашынның айлық мөлшерін есептеуге ғана сүйенеді</label>
-            </div>
-            <div class="result" data-explain="Бұл тақырыпта геологиялық даму кезеңдері, тектоникалық құрылымдар, жер бедері және ресурстар арасындағы күрделі байланыс қарастырылады."></div>
-          </article>
-
-          <div class="quiz-actions">
-            <button class="check-btn" data-check="b1-tectonics">Жауаптарды тексеру</button>
-            <button class="reset-btn" data-reset="b1-tectonics">Қайта белгілеу</button>
+      <section class="page" id="n-chapter-3">
+        <div class="book-hero">
+          <div class="breadcrumb">
+            <button class="back-btn" data-open="bookNaumenko">← 1-кітапқа қайту</button>
+            <span>3-тарау</span>
           </div>
 
-          <div class="score-box" data-score="b1-tectonics"></div>
+          <h2>Қазақстанның жер бедері</h2>
+          <p>
+            Бұл тарау Қазақстан жер бедерінің ірі пішіндерін, жазықтар мен ойпаттарды,
+            үстірттерді, аласа тауларды және шығыс пен оңтүстік-шығыстағы биік тау
+            жүйелерін сипаттауға арналған.
+          </p>
         </div>
-      </div>
 
-      <div id="b1-t3" class="content-block">
-        <h3 class="mini-title">1-кітап · Қазақстанның жер бедері</h3>
-        <p class="lead">
-          Бұл бөлімде Қазақстан жер бедерінің негізгі пішіндері, жазықтар мен таулардың
-          таралуы, ойпаттар, үстірттер, ұсақ шоқылар және биік таулы жүйелердің
-          физикалық-географиялық маңызы түсіндіріледі.
-        </p>
+        <div class="content-block">
+          <h3>Қысқаша теория</h3>
+          <p>
+            Қазақстан жер бедері кең жазықтардың басым болуымен және шығыс, оңтүстік-шығыс
+            бөліктерінде биік тау жүйелерінің орналасуымен ерекшеленеді. Жазықтар мен
+            ойпаттар ел аумағының көп бөлігін алып жатыр, ал таулар табиғи жағдайлардың
+            күрделенуіне, ылғалдың жиналуына және өзен жүйелерінің қалыптасуына әсер етеді.
+          </p>
+          <p>
+            Ел аумағында Шығыс Еуропа жазығының шеті, Тұран жазығы, Солтүстік Қазақстан
+            жазығы, Сарыарқа, Мұғалжар, Алтай, Сауыр, Тарбағатай, Жетісу Алатауы және
+            Тянь-Шань сияқты жер бедері бірліктері кездеседі. Жер бедерінің мұндай
+            әркелкілігі Қазақстан табиғи кешендерінің аймақтық айырмашылығын күшейтеді.
+          </p>
+        </div>
 
-        <div class="info-grid">
-          <div class="note">
-            <h5>Негізгі ойлар</h5>
-            <ul>
-              <li>Қазақстан аумағында жазық жер бедері басым.</li>
-              <li>Шығыс және оңтүстік-шығыста биік таулы жүйелер орналасқан.</li>
-              <li>Жер бедері климатқа, өзен торына, топырақ пен өсімдіктің таралуына әсер етеді.</li>
-              <li>Ойпаттар мен үстірттер Қазақстанның батыс және оңтүстік-батыс табиғи кешендерінде маңызды орын алады.</li>
-            </ul>
-          </div>
-
-          <div class="note">
-            <h5>Терминдер</h5>
-            <div class="term-list">
-              <div class="term"><b>Ойпат</b> — абсолюттік биіктігі төмен, кейде теңіз деңгейінен төмен орналасатын жер бедері.</div>
-              <div class="term"><b>Үстірт</b> — беті біршама тегіс, шеттері тік немесе сатылы көтеріңкі жазық.</div>
-              <div class="term"><b>Ұсақ шоқы</b> — аласа таулы, төбелі-белесті, қатты мүжілген жер бедері.</div>
+        <div class="content-block">
+          <h3>КТА тақырыптарымен байланысы</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Қазақстанның жер бедері</b>
+              <span>Жазықтар, ойпаттар, үстірттер, аласа және биік таулар.</span>
+            </div>
+            <div class="term">
+              <b>Тектоникалық-геологиялық құрылым</b>
+              <span>Жер бедері пішіндерінің геологиялық негізбен байланысы.</span>
+            </div>
+            <div class="term">
+              <b>Қазақстанның климаты</b>
+              <span>Таулардың ылғал, температура және ауа массаларына ықпалы.</span>
+            </div>
+            <div class="term">
+              <b>Ішкі сулар</b>
+              <span>Таулы аймақтарда өзендер мен мұздықтардың қалыптасуы.</span>
             </div>
           </div>
         </div>
 
-        <div class="quiz-wrap" data-quiz="b1-relief">
-          <article class="question-card" data-answer="D">
-            <div class="question-head">
-              <span class="q-num">1-сұрақ</span>
-              <h5>Қазақстан жер бедерінің жалпы сипатын дұрыс көрсететін тұжырым қайсы?</h5>
+        <div class="content-block">
+          <h3>Негізгі терминдер</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Жазық</b>
+              <span>Беті салыстырмалы тегіс немесе сәл толқынды, биіктік айырмасы аз жер бедері.</span>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1r1" value="A"> А) Аумағының негізгі бөлігін биік таулы белдеулер алып жатыр</label>
-              <label class="option"><input type="radio" name="b1r1" value="B"> B) Жер бедері түгелдей теңіз деңгейінен төмен орналасқан</label>
-              <label class="option"><input type="radio" name="b1r1" value="C"> C) Таулар батыс пен солтүстікте тұтас тізбек құрайды</label>
-              <label class="option"><input type="radio" name="b1r1" value="D"> D) Жазықтар басым, таулар шығыс және оңтүстік-шығыста шоғырланған</label>
-              <label class="option"><input type="radio" name="b1r1" value="E"> E) Жазықтар тек тауаралық қазаншұңқырларда кездеседі</label>
+            <div class="term">
+              <b>Ойпат</b>
+              <span>Айналасындағы аумаққа қарағанда төмен орналасқан жер бедері бөлігі.</span>
             </div>
-            <div class="result" data-explain="Қазақстанда жазықтар кең таралған, ал Алтай, Сауыр-Тарбағатай, Жетісу Алатауы және Тянь-Шань сияқты биік таулар шығыс пен оңтүстік-шығыста орналасады."></div>
-          </article>
+            <div class="term">
+              <b>Үстірт</b>
+              <span>Беті біршама тегіс, шеттері тік жарқабақты көтеріңкі жазық.</span>
+            </div>
+            <div class="term">
+              <b>Таулы жүйе</b>
+              <span>Бір-бірімен байланысты жоталар, тауаралық аңғарлар мен биік белдеулер жиынтығы.</span>
+            </div>
+          </div>
+        </div>
 
-          <article class="question-card" data-answer="A">
-            <div class="question-head">
-              <span class="q-num">2-сұрақ</span>
-              <h5>Жер бедері табиғи компоненттердің қай байланысына тікелей ықпал етеді?</h5>
-            </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1r2" value="A"> А) Климат, су торы, топырақ және өсімдік таралуына</label>
-              <label class="option"><input type="radio" name="b1r2" value="B"> B) Мемлекеттік басқару жүйесі мен қала мәртебесіне</label>
-              <label class="option"><input type="radio" name="b1r2" value="C"> C) Өнеркәсіп өнімдерінің сыртқы сауда бағытына</label>
-              <label class="option"><input type="radio" name="b1r2" value="D"> D) Халықтың тілдік құрамы мен көші-қон түріне</label>
-              <label class="option"><input type="radio" name="b1r2" value="E"> E) Экономикалық аудан атауларының өзгеруіне</label>
-            </div>
-            <div class="result" data-explain="Жер бедері ауа массаларының қозғалысына, өзендердің бағытына, топырақтың қалыптасуына және өсімдік жамылғысының таралуына әсер етеді."></div>
-          </article>
+        <div class="content-block">
+          <h3>Тест тапсырмалары</h3>
 
-          <article class="question-card" data-answer="E">
-            <div class="question-head">
-              <span class="q-num">3-сұрақ</span>
-              <h5>Ойпат ұғымын Қазақстан жер бедері тұрғысынан қалай түсіндіруге болады?</h5>
+          <div class="test-box">
+            <div class="question" data-answer="E">
+              <h4>1. Қазақстан жер бедерінің жалпы сипатына тән ерекшелік қайсы?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n3q1" value="A"> А) Биік таулардың барлық аумақта біркелкі таралуы</label>
+                <label class="option"><input type="radio" name="n3q1" value="B"> B) Мұздықты жазықтардың батыстан шығысқа созылуы</label>
+                <label class="option"><input type="radio" name="n3q1" value="C"> C) Жанартаулық үстірттердің солтүстікте шоғырлануы</label>
+                <label class="option"><input type="radio" name="n3q1" value="D"> D) Теңіздік жағалаулардың аумақтың көп бөлігін қамтуы</label>
+                <label class="option"><input type="radio" name="n3q1" value="E"> E) Жазықтардың басым болып, таулардың шығыс және оңтүстік-шығыста орналасуы</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: E. Қазақстан аумағында жазықтар кең таралған, ал ірі биік тау жүйелері негізінен шығыс пен оңтүстік-шығыста орналасқан.
+              </div>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1r3" value="A"> А) Биік таулы мұздықтар таралған тік беткейлі аймақ</label>
-              <label class="option"><input type="radio" name="b1r3" value="B"> B) Қатпарлы белдеудегі шыңды тау жоталары жүйесі</label>
-              <label class="option"><input type="radio" name="b1r3" value="C"> C) Жанартаулық конустардан құралған көтеріңкі жазық</label>
-              <label class="option"><input type="radio" name="b1r3" value="D"> D) Тек мұздық әрекетінен түзілген тауаралық белдеу</label>
-              <label class="option"><input type="radio" name="b1r3" value="E"> E) Абсолюттік биіктігі төмен, кейде теңіз деңгейінен төмен жатқан жазық</label>
-            </div>
-            <div class="result" data-explain="Ойпат — жер бедерінің төмен жатқан пішіні; Қазақстанда Каспий маңы сияқты төмен орналасқан аумақтар табиғи кешендердің ерекшелігін қалыптастырады."></div>
-          </article>
 
-          <article class="question-card" data-answer="B">
-            <div class="question-head">
-              <span class="q-num">4-сұрақ</span>
-              <h5>Ұсақ шоқылы жер бедерінің негізгі сипаты қай жауапта дұрыс берілген?</h5>
+            <div class="question" data-answer="A">
+              <h4>2. Қазақстанның орталық бөлігіндегі аласа таулы өлке қалай аталады?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n3q2" value="A"> А) Сарыарқа</label>
+                <label class="option"><input type="radio" name="n3q2" value="B"> B) Үстірт</label>
+                <label class="option"><input type="radio" name="n3q2" value="C"> C) Бетпақдала</label>
+                <label class="option"><input type="radio" name="n3q2" value="D"> D) Торғай үстірті</label>
+                <label class="option"><input type="radio" name="n3q2" value="E"> E) Каспий маңы ойпаты</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: A. Сарыарқа Қазақстанның орталық бөлігіндегі аласа таулы, ұсақ шоқылы аймақ ретінде сипатталады.
+              </div>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1r4" value="A"> А) Мұхит түбіндегі терең шұңғымалар жүйесі</label>
-              <label class="option"><input type="radio" name="b1r4" value="B"> B) Мүжілген аласа таулар мен төбелі-белесті пішіндердің таралуы</label>
-              <label class="option"><input type="radio" name="b1r4" value="C"> C) Қазіргі жанартау атқылауынан қалыптасқан биік конустар</label>
-              <label class="option"><input type="radio" name="b1r4" value="D"> D) Теңіздік маржан рифтерінен түзілген аралдық белдеу</label>
-              <label class="option"><input type="radio" name="b1r4" value="E"> E) Мұздық астындағы тегіс аккумуляциялық жазықтар</label>
-            </div>
-            <div class="result" data-explain="Ұсақ шоқы — ұзақ мүжілу нәтижесінде аласарған, төбелі-белесті, қатты тілімденген жер бедері."></div>
-          </article>
 
-          <article class="question-card" data-answer="C">
-            <div class="question-head">
-              <span class="q-num">5-сұрақ</span>
-              <h5>Таулы аймақтардың Қазақстан табиғатындағы физикалық-географиялық маңызы неде?</h5>
+            <div class="question" data-answer="C">
+              <h4>3. Қазақстандағы таулардың физикалық-географиялық маңызы неде?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n3q3" value="A"> А) Шөлдердің барлық бөлігін теңіздік климатқа ауыстырады</label>
+                <label class="option"><input type="radio" name="n3q3" value="B"> B) Жазық аймақтардағы топырақ түрлерін жояды</label>
+                <label class="option"><input type="radio" name="n3q3" value="C"> C) Ылғал жинап, өзендер мен табиғи белдеулердің қалыптасуына әсер етеді</label>
+                <label class="option"><input type="radio" name="n3q3" value="D"> D) Барлық өзендердің Каспийге құюын қамтамасыз етеді</label>
+                <label class="option"><input type="radio" name="n3q3" value="E"> E) Құрғақ климаттың негізгі себебі ретінде ғана көрінеді</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: C. Таулы аймақтар ылғалды көбірек ұстап, өзендердің басталуына және биіктік белдеулердің қалыптасуына жағдай жасайды.
+              </div>
             </div>
-            <div class="options">
-              <label class="option"><input type="radio" name="b1r5" value="A"> А) Жазықтағы шөлдердің барлығын орманды далаға айналдырады</label>
-              <label class="option"><input type="radio" name="b1r5" value="B"> B) Өзендердің теңіздік толысуын реттейтін негізгі фактор болады</label>
-              <label class="option"><input type="radio" name="b1r5" value="C"> C) Ылғалды жинақтап, өзендердің басталуына және биіктік белдеулікке жағдай жасайды</label>
-              <label class="option"><input type="radio" name="b1r5" value="D"> D) Климаттың континенттілігін толық жойып, теңіздік режим қалыптастырады</label>
-              <label class="option"><input type="radio" name="b1r5" value="E"> E) Топырақ жамылғысын ендік бағытта ғана біркелкі таратады</label>
-            </div>
-            <div class="result" data-explain="Таулар ылғал конденсациясына, өзендердің қоректенуіне, мұздықтардың сақталуына және биіктік белдеулердің қалыптасуына әсер етеді."></div>
-          </article>
 
-          <div class="quiz-actions">
-            <button class="check-btn" data-check="b1-relief">Жауаптарды тексеру</button>
-            <button class="reset-btn" data-reset="b1-relief">Қайта белгілеу</button>
+            <div class="question" data-answer="B">
+              <h4>4. Шығыс және оңтүстік-шығыс Қазақстандағы ірі тау жүйелерінің қатарына қай топ кіреді?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n3q4" value="A"> А) Каспий маңы ойпаты, Тұран жазығы, Үстірт</label>
+                <label class="option"><input type="radio" name="n3q4" value="B"> B) Алтай, Сауыр, Жетісу Алатауы, Тянь-Шань</label>
+                <label class="option"><input type="radio" name="n3q4" value="C"> C) Сарыарқа, Бетпақдала, Торғай қолаты</label>
+                <label class="option"><input type="radio" name="n3q4" value="D"> D) Жалпы Сырт, Мұғалжар, Каспий маңы ойпаты</label>
+                <label class="option"><input type="radio" name="n3q4" value="E"> E) Солтүстік Қазақстан жазығы, Ертіс маңы, Балқаш маңы</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: B. Қазақстанның шығысы мен оңтүстік-шығысында Алтай, Сауыр, Жетісу Алатауы және Тянь-Шань тау жүйелері орналасқан.
+              </div>
+            </div>
+
+            <div class="question" data-answer="D">
+              <h4>5. Үстірт ұғымына сәйкес келетін сипаттама қайсы?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n3q5" value="A"> А) Биіктік айырмасы жоқ теңіздік жағалау белдеуі</label>
+                <label class="option"><input type="radio" name="n3q5" value="B"> B) Мұздықтармен жабылған тауаралық қазаншұңқыр</label>
+                <label class="option"><input type="radio" name="n3q5" value="C"> C) Арнасы тұрақты өзеннің жайылмалы бөлігі</label>
+                <label class="option"><input type="radio" name="n3q5" value="D"> D) Беті біршама тегіс, шеттері тік жарқабақты көтеріңкі жазық</label>
+                <label class="option"><input type="radio" name="n3q5" value="E"> E) Тау жоталары арасындағы терең мұздық аңғар</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: D. Үстірт — беті салыстырмалы тегіс, жиектері көбіне тік кемерлі болып келетін көтеріңкі жазық түрі.
+              </div>
+            </div>
+
+            <button class="check-btn" data-check>Жауаптарды тексеру</button>
+          </div>
+        </div>
+      </section>
+            <section class="page" id="n-chapter-4">
+        <div class="book-hero">
+          <div class="breadcrumb">
+            <button class="back-btn" data-open="bookNaumenko">← 1-кітапқа қайту</button>
+            <span>4-тарау</span>
           </div>
 
-          <div class="score-box" data-score="b1-relief"></div>
+          <h2>Қазақстанның климаты</h2>
+          <p>
+            Бұл тарау Қазақстан климатының қалыптасу факторларын, материкішілік
+            орналасудың әсерін, температура мен жауын-шашынның таралуын, құрғақшылық
+            пен континенттілік белгілерін түсіндіреді.
+          </p>
         </div>
-      </div>
+
+        <div class="content-block">
+          <h3>Қысқаша теория</h3>
+          <p>
+            Қазақстан Еуразия материгінің ішкі бөлігінде орналасқандықтан, климаты
+            құрғақ және шұғыл континентті сипат алады. Мұхиттардан қашық орналасуы
+            ылғалдың аз түсуіне, жаз бен қыс температураларының айырмашылығының
+            күшеюіне және табиғат зоналарының солтүстікке қарай ығысуына әсер етеді.
+          </p>
+          <p>
+            Климаттың қалыптасуына географиялық ендік, атмосфера циркуляциясы,
+            жер бедері, күн радиациясы және ауа массалары ықпал етеді. Жазық бөліктерде
+            жауын-шашын салыстырмалы аз түседі, ал таулы аймақтарда биіктікке байланысты
+            ылғал мөлшері артып, температура төмендейді.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>КТА тақырыптарымен байланысы</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Қазақстанның климаты</b>
+              <span>Континенттілік, құрғақшылық, температура, жауын-шашын, ауа массалары.</span>
+            </div>
+            <div class="term">
+              <b>Қазақстанның географиялық орны</b>
+              <span>Материкішілік орналасу мен ендік жағдайдың климатқа әсері.</span>
+            </div>
+            <div class="term">
+              <b>Қазақстанның жер бедері</b>
+              <span>Таулардың ылғал жинауы және биіктік белдеулік климат айырмашылығы.</span>
+            </div>
+            <div class="term">
+              <b>Табиғат зоналары</b>
+              <span>Климаттық айырмашылықтардың зоналық таралуға ықпалы.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Негізгі терминдер</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Континентті климат</b>
+              <span>Жылдық температура айырмасы жоғары, жауын-шашыны аз, мұхит әсері әлсіз климат түрі.</span>
+            </div>
+            <div class="term">
+              <b>Аридтілік</b>
+              <span>Ылғалдың жеткіліксіздігімен және буланудың жоғары болуымен сипатталатын құрғақтық жағдайы.</span>
+            </div>
+            <div class="term">
+              <b>Атмосфера циркуляциясы</b>
+              <span>Ауа массаларының қозғалысы мен олардың аумақ климатына ықпал ету жүйесі.</span>
+            </div>
+            <div class="term">
+              <b>Климат қалыптастырушы фактор</b>
+              <span>Климаттың сипатын анықтайтын географиялық және атмосфералық жағдайлар жиынтығы.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Тест тапсырмалары</h3>
+
+          <div class="test-box">
+            <div class="question" data-answer="B">
+              <h4>1. Қазақстан климатының шұғыл континентті болуына негізгі әсер ететін жағдай қайсы?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n4q1" value="A"> А) Мұхиттық ағыстардың аумаққа жақын орналасуы</label>
+                <label class="option"><input type="radio" name="n4q1" value="B"> B) Еуразия материгінің ішкі бөлігінде орналасуы</label>
+                <label class="option"><input type="radio" name="n4q1" value="C"> C) Тропиктік белдеудің ортасында жатуы</label>
+                <label class="option"><input type="radio" name="n4q1" value="D"> D) Жағалық ылғалды ауа массаларының тұрақты басым болуы</label>
+                <label class="option"><input type="radio" name="n4q1" value="E"> E) Теңіздік климаттың барлық маусымда сақталуы</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: B. Қазақстан мұхиттардан алыс, Еуразияның ішкі бөлігінде орналасқандықтан, климат құрғақ әрі континентті сипат алады.
+              </div>
+            </div>
+
+            <div class="question" data-answer="D">
+              <h4>2. Қазақстанның жазық бөлігінде жауын-шашынның аз түсуі көбіне қандай жағдаймен түсіндіріледі?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n4q2" value="A"> А) Жер бедерінің мұздықтармен толық жабылуымен</label>
+                <label class="option"><input type="radio" name="n4q2" value="B"> B) Жылы теңіздердің тұрақты ылғал әкелуімен</label>
+                <label class="option"><input type="radio" name="n4q2" value="C"> C) Экваторлық ауа массаларының басымдығымен</label>
+                <label class="option"><input type="radio" name="n4q2" value="D"> D) Мұхиттардан қашықтық және құрлықтық ауа ықпалымен</label>
+                <label class="option"><input type="radio" name="n4q2" value="E"> E) Таулы аймақтардың солтүстікте ғана таралуымен</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: D. Мұхиттардан алыс орналасу ылғалды ауа массаларының әлсіреуіне және жауын-шашын мөлшерінің азаюына ықпал етеді.
+              </div>
+            </div>
+
+            <div class="question" data-answer="A">
+              <h4>3. Қазақстанның таулы аймақтарында жауын-шашынның көбірек түсуіне әсер ететін фактор қайсы?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n4q3" value="A"> А) Биіктікке байланысты ауа массаларының көтерілуі</label>
+                <label class="option"><input type="radio" name="n4q3" value="B"> B) Құмды алқаптардың барлық беткейде басым болуы</label>
+                <label class="option"><input type="radio" name="n4q3" value="C"> C) Өзен арналарының жазықта сирек орналасуы</label>
+                <label class="option"><input type="radio" name="n4q3" value="D"> D) Топырақ қабатының тұздану деңгейінің артуы</label>
+                <label class="option"><input type="radio" name="n4q3" value="E"> E) Шөл зоналарының тау шыңдарына дейін созылуы</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: A. Таулы аймақтарда ауа биіктеген сайын салқындап, ылғал конденсациясы күшейеді, сондықтан жауын-шашын көбейеді.
+              </div>
+            </div>
+
+            <div class="question" data-answer="C">
+              <h4>4. Климаттың континенттілігі қандай белгі арқылы айқын көрінеді?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n4q4" value="A"> А) Жыл бойы температураның өзгеріссіз сақталуы</label>
+                <label class="option"><input type="radio" name="n4q4" value="B"> B) Мұхиттық ылғалдың барлық маусымда тұрақты келуі</label>
+                <label class="option"><input type="radio" name="n4q4" value="C"> C) Жазғы және қысқы температура айырмасының үлкен болуы</label>
+                <label class="option"><input type="radio" name="n4q4" value="D"> D) Жауын-шашынның тек тау мұздықтарынан түзілуі</label>
+                <label class="option"><input type="radio" name="n4q4" value="E"> E) Экваторлық циклондардың тұрақты қайталануы</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: C. Континентті климатта жаз ыстық, қыс суық болып, маусымдық температура амплитудасы жоғары болады.
+              </div>
+            </div>
+
+            <div class="question" data-answer="E">
+              <h4>5. Қазақстанда табиғат зоналарының солтүстікке қарай ығысуына әсер ететін климаттық себеп қайсы?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n4q5" value="A"> А) Теңіздік ауа массаларының жыл бойы тұрақты келуі</label>
+                <label class="option"><input type="radio" name="n4q5" value="B"> B) Қысқы жауын-шашынның барлық жерде бірдей түсуі</label>
+                <label class="option"><input type="radio" name="n4q5" value="C"> C) Таулы мұздықтардың жазыққа дейін таралуы</label>
+                <label class="option"><input type="radio" name="n4q5" value="D"> D) Солтүстікте субтропиктік ылғалдың қалыптасуы</label>
+                <label class="option"><input type="radio" name="n4q5" value="E"> E) Құрғақ және континентті климат жағдайының басым болуы</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: E. Қазақстандағы құрғақ әрі континентті климат табиғат зоналарының Еуропадағы ұқсас ендіктермен салыстырғанда солтүстікке ығысуына әсер етеді.
+              </div>
+            </div>
+
+            <button class="check-btn" data-check>Жауаптарды тексеру</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="n-chapter-5">
+        <div class="book-hero">
+          <div class="breadcrumb">
+            <button class="back-btn" data-open="bookNaumenko">← 1-кітапқа қайту</button>
+            <span>5-тарау</span>
+          </div>
+
+          <h2>Қазақстанның ішкі сулары</h2>
+          <p>
+            Бұл тарау Қазақстандағы өзендер, көлдер, мұздықтар, жерасты сулары және
+            су ресурстарының аумақ бойынша таралу заңдылықтарын түсіндіреді.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>Қысқаша теория</h3>
+          <p>
+            Ішкі сулар ландшафттың маңызды компоненті ретінде климатпен, жер бедерімен
+            және географиялық орынмен тығыз байланысты. Қазақстанда жерүсті сулары өте
+            әркелкі таралған: аридті аудандарда өзендер мен көлдер аз, солтүстіктегі
+            ылғалы көбірек аймақтарда және биік тауларда су нысандары жиірек кездеседі.
+          </p>
+          <p>
+            Өзендердің қоректенуі қар, жаңбыр, мұздық және жерасты сулары арқылы
+            қалыптасады. Биік тауларда мәңгі қар мен мұздықтар өзендердің бастау алуына
+            жағдай жасайды. Көлдердің таралуы мен қасиеттері қазаншұңқырлардың шығу
+            тегіне, климатқа, булануға және су алмасу ерекшелігіне байланысты.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>КТА тақырыптарымен байланысы</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Қазақстанның ішкі сулары</b>
+              <span>Өзендер, көлдер, мұздықтар, жерасты сулары, су алаптары.</span>
+            </div>
+            <div class="term">
+              <b>Қазақстанның климаты</b>
+              <span>Жауын-шашын, булану және құрғақшылықтың су жүйелеріне әсері.</span>
+            </div>
+            <div class="term">
+              <b>Қазақстанның жер бедері</b>
+              <span>Өзен аңғарлары, суайрықтар, таулы өзендердің қалыптасуы.</span>
+            </div>
+            <div class="term">
+              <b>Табиғат ресурстары</b>
+              <span>Су ресурстарының шаруашылық және экологиялық маңызы.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Негізгі терминдер</h3>
+          <div class="term-grid">
+            <div class="term">
+              <b>Өзен алабы</b>
+              <span>Белгілі бір өзенге және оның салаларына су жиналатын аумақ.</span>
+            </div>
+            <div class="term">
+              <b>Суайрық</b>
+              <span>Көршілес өзен алаптарын бөліп тұратын жер бедері сызығы немесе белдеуі.</span>
+            </div>
+            <div class="term">
+              <b>Мұздық қоректену</b>
+              <span>Өзен суының таудағы мұздықтар мен мәңгі қардың еруі арқылы толығуы.</span>
+            </div>
+            <div class="term">
+              <b>Көл қазаншұңқыры</b>
+              <span>Көл суы жиналатын табиғи ойыс, оның шығу тегі көлдің сипатына әсер етеді.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Тест тапсырмалары</h3>
+
+          <div class="test-box">
+            <div class="question" data-answer="A">
+              <h4>1. Қазақстанда жерүсті суларының әркелкі таралуына әсер ететін негізгі факторлар қайсы?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n5q1" value="A"> А) Географиялық орын, жер бедері және климат жағдайы</label>
+                <label class="option"><input type="radio" name="n5q1" value="B"> B) Қалалардың әкімшілік мәртебесі және көлік торабы</label>
+                <label class="option"><input type="radio" name="n5q1" value="C"> C) Өнеркәсіп салаларының мамандануы және еңбек ресурсы</label>
+                <label class="option"><input type="radio" name="n5q1" value="D"> D) Халық тығыздығы мен урбандалу деңгейі</label>
+                <label class="option"><input type="radio" name="n5q1" value="E"> E) Экспорттық өнім құрамы және сыртқы сауда бағыты</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: A. Ішкі сулардың таралуы ең алдымен географиялық орынға, жер бедеріне және климаттық ылғалдану жағдайына тәуелді.
+              </div>
+            </div>
+
+            <div class="question" data-answer="C">
+              <h4>2. Қазақстанның қай аймақтарында өзендер мен көлдер салыстырмалы көбірек таралған?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n5q2" value="A"> А) Құрғақ шөлдердің орталық бөліктерінде</label>
+                <label class="option"><input type="radio" name="n5q2" value="B"> B) Сортаңды ойыстар мен құмды алқаптарда</label>
+                <label class="option"><input type="radio" name="n5q2" value="C"> C) Солтүстіктегі ылғалдырақ өңірлерде және биік тауларда</label>
+                <label class="option"><input type="radio" name="n5q2" value="D"> D) Жауын-шашыны аз аридті жазықтарда</label>
+                <label class="option"><input type="radio" name="n5q2" value="E"> E) Тұйық құрғақ қазаншұңқырлардың барлығында</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: C. Солтүстікте жауын-шашын көбірек, ал биік тауларда мәңгі қар мен мұздықтар өзендердің қалыптасуына ықпал етеді.
+              </div>
+            </div>
+
+            <div class="question" data-answer="D">
+              <h4>3. Биік таулардағы өзендердің су қорын толықтыруда қандай табиғи көз маңызды?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n5q3" value="A"> А) Құрғақ желдердің жыл бойғы әсері</label>
+                <label class="option"><input type="radio" name="n5q3" value="B"> B) Құмды шөлдердің беткі булануы</label>
+                <label class="option"><input type="radio" name="n5q3" value="C"> C) Тұзды көлдердің жағалау шөгінділері</label>
+                <label class="option"><input type="radio" name="n5q3" value="D"> D) Мәңгі қар мен мұздықтардың еруі</label>
+                <label class="option"><input type="radio" name="n5q3" value="E"> E) Қалалық су қоймаларының деңгейі</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: D. Биік таулы аймақтарда өзендер көбіне қар мен мұздықтардың еруі арқылы су қорын толықтырады.
+              </div>
+            </div>
+
+            <div class="question" data-answer="B">
+              <h4>4. Көлдердің тереңдігі, пішіні және су режимінің әртүрлі болуы немен байланысты?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n5q4" value="A"> А) Өсімдік жамылғысының биологиялық өнімділігімен</label>
+                <label class="option"><input type="radio" name="n5q4" value="B"> B) Көл қазаншұңқырларының шығу тегімен және табиғи жағдайымен</label>
+                <label class="option"><input type="radio" name="n5q4" value="C"> C) Қалалардың өнеркәсіптік мамандануымен</label>
+                <label class="option"><input type="radio" name="n5q4" value="D"> D) Теміржол желілерінің орналасу бағытымен</label>
+                <label class="option"><input type="radio" name="n5q4" value="E"> E) Экономикалық аудандардың әкімшілік шекарасымен</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: B. Көлдердің морфологиясы мен режимі қазаншұңқырдың тектоникалық, эрозиялық, мұздық, желдік немесе басқа шығу тегіне тәуелді.
+              </div>
+            </div>
+
+            <div class="question" data-answer="E">
+              <h4>5. Ішкі сулардың ландшафттағы орны қалай сипатталады?</h4>
+              <div class="options">
+                <label class="option"><input type="radio" name="n5q5" value="A"> А) Табиғи кешеннен оқшау дамитын жеке шаруашылық нысан</label>
+                <label class="option"><input type="radio" name="n5q5" value="B"> B) Климат пен жер бедеріне әсер етпейтін тұрақты элемент</label>
+                <label class="option"><input type="radio" name="n5q5" value="C"> C) Өсімдік пен топыраққа қатысы жоқ сыртқы құбылыс</label>
+                <label class="option"><input type="radio" name="n5q5" value="D"> D) Тек тау аймақтарына тән маусымдық құбылыс</label>
+                <label class="option"><input type="radio" name="n5q5" value="E"> E) Климат, жер бедері және табиғи кешендермен байланысқан ландшафт компоненті</label>
+              </div>
+              <div class="result-note">
+                Дұрыс жауап: E. Ішкі сулар табиғи кешеннің құрамына кіреді және климатпен, жер бедерімен, топырақпен, өсімдікпен өзара байланыста болады.
+              </div>
+            </div>
+
+            <button class="check-btn" data-check>Жауаптарды тексеру</button>
+          </div>
+        </div>
+      </section>
