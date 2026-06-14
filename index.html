@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Қазақстанның физикалық географиясы I | КТА дайындық</title>
+
+  <style>
+    :root{
+      --bg:#f5f7f2;
+      --bg2:#eef4e8;
+      --card:#ffffff;
+      --text:#17211a;
+      --muted:#667064;
+      --green:#2f6b4f;
+      --green2:#4d8c65;
+      --deep:#123528;
+      --sand:#e9d9ad;
+      --blue:#2e6d8f;
+      --orange:#c77b3a;
+      --red:#b64b4b;
+      --line:#d9e2d3;
+      --shadow:0 18px 45px rgba(23,33,26,.10);
+      --radius:24px;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(77,140,101,.18), transparent 34%),
+        radial-gradient(circle at top right, rgba(46,109,143,.14), transparent 30%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+      line-height:1.65;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button{
+      font-family:inherit;
+    }
+
+    .page{
+      width:min(1180px, calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      padding:18px 0 10px;
+    }
+
+    .nav{
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(217,226,211,.95);
+      border-radius:999px;
+      box-shadow:0 10px 30px rgba(23,33,26,.07);
+      padding:10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding-left:8px;
+      font-weight:900;
+      letter-spacing:.2px;
+      color:var(--deep);
+    }
+
+    .brand-icon{
+      width:38px;
+      height:38px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--green), var(--blue));
+      color:white;
+      box-shadow:0 10px 20px rgba(47,107,79,.22);
+    }
+
+    .navlinks{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+
+    .navlinks a{
+      padding:9px 14px;
+      border-radius:999px;
+      color:var(--muted);
+      font-weight:750;
+      font-size:14px;
+      transition:.2s ease;
+    }
+
+    .navlinks a:hover{
+      background:var(--bg2);
+      color:var(--green);
+    }
+
+    .hero{
+      padding:64px 0 34px;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-card{
+      background:
+        linear-gradient(135deg, rgba(18,53,40,.96), rgba(47,107,79,.91)),
+        url("data:image/svg+xml,%3Csvg width='180' height='180' viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='white' fill-opacity='.06'%3E%3Cpath d='M28 42c22-20 44-20 66 0s44 20 66 0v18c-22 20-44 20-66 0s-44-20-66 0z'/%3E%3Cpath d='M0 116c28-26 56-26 84 0s56 26 84 0v20c-28 26-56 26-84 0s-56-26-84 0z'/%3E%3C/g%3E%3C/svg%3E");
+      color:white;
+      border-radius:36px;
+      padding:42px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:230px;
+      height:230px;
+      border-radius:999px;
+      right:-70px;
+      bottom:-80px;
+      background:rgba(233,217,173,.20);
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 13px;
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:999px;
+      background:rgba(255,255,255,.11);
+      font-weight:800;
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    .hero h1{
+      font-size:clamp(34px, 5vw, 66px);
+      line-height:1.03;
+      letter-spacing:-1.8px;
+      margin-bottom:18px;
+      max-width:820px;
+    }
+
+    .hero p{
+      color:rgba(255,255,255,.84);
+      max-width:710px;
+      font-size:17px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:26px;
+    }
+
+    .btn{
+      border:0;
+      cursor:pointer;
+      border-radius:999px;
+      padding:13px 18px;
+      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:.18s ease;
+    }
+
+    .btn-primary{
+      background:white;
+      color:var(--deep);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 25px rgba(0,0,0,.14);
+    }
+
+    .btn-soft{
+      background:rgba(255,255,255,.12);
+      color:white;
+      border:1px solid rgba(255,255,255,.24);
+    }
+
+    .btn-soft:hover{
+      background:rgba(255,255,255,.18);
+    }
+
+    .side-panel{
+      display:grid;
+      gap:14px;
+    }
+
+    .stat-card{
+      background:rgba(255,255,255,.84);
+      border:1px solid rgba(217,226,211,.9);
+      border-radius:26px;
+      padding:22px;
+      box-shadow:0 14px 35px rgba(23,33,26,.07);
+    }
+
+    .stat-card strong{
+      display:block;
+      font-size:30px;
+      line-height:1.1;
+      color:var(--green);
+      margin-bottom:5px;
+    }
+
+    .stat-card span{
+      color:var(--muted);
+      font-weight:650;
+      font-size:14px;
+    }
+
+    .section{
+      padding:34px 0;
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:18px;
+      margin-bottom:20px;
+      flex-wrap:wrap;
+    }
+
+    .section-title{
+      font-size:clamp(26px, 3vw, 42px);
+      line-height:1.12;
+      letter-spacing:-.8px;
+      color:var(--deep);
+    }
+
+    .section-subtitle{
+      color:var(--muted);
+      max-width:780px;
+      margin-top:8px;
+      font-size:15.5px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .book-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:0 16px 38px rgba(23,33,26,.07);
+      position:relative;
+      overflow:hidden;
+      min-height:280px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .book-card::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:8px;
+      background:linear-gradient(90deg, var(--green), var(--blue), var(--sand));
+    }
+
+    .book-num{
+      width:44px;
+      height:44px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      background:var(--bg2);
+      color:var(--green);
+      font-weight:950;
+      margin-bottom:18px;
+    }
+
+    .book-card h3{
+      font-size:21px;
+      line-height:1.24;
+      color:var(--deep);
+      margin-bottom:12px;
+    }
+
+    .book-card p{
+      color:var(--muted);
+      font-size:14.5px;
+    }
+
+    .book-meta{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .pill{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#f0f4ed;
+      color:var(--green);
+      font-size:12.5px;
+      font-weight:850;
+    }
+
+    .open-btn{
+      margin-top:22px;
+      border:0;
+      width:100%;
+      justify-content:center;
+      background:var(--deep);
+      color:white;
+    }
+
+    .open-btn:hover{
+      background:var(--green);
+    }
+
+    .tabs{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin:8px 0 20px;
+    }
+
+    .tab-btn{
+      border:1px solid var(--line);
+      background:white;
+      color:var(--muted);
+      border-radius:999px;
+      padding:10px 14px;
+      cursor:pointer;
+      font-weight:850;
+      transition:.18s ease;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover{
+      background:var(--green);
+      color:white;
+      border-color:var(--green);
+    }
+
+    .book-section{
+      display:none;
+    }
+
+    .book-section.active{
+      display:block;
+      animation:fadeIn .24s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(8px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+
+    .chapter-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:16px;
+    }
+
+    .chapter-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 12px 28px rgba(23,33,26,.055);
+    }
+
+    .chapter-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .chapter-card h4{
+      font-size:18px;
+      color:var(--deep);
+      line-height:1.32;
+    }
+
+    .chapter-card p{
+      color:var(--muted);
+      font-size:14.5px;
+      margin-top:8px;
+    }
+
+    .tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-top:14px;
+    }
+
+    .kta-tag{
+      font-size:12px;
+      font-weight:850;
+      color:#2d5f49;
+      background:#edf5ef;
+      border:1px solid #d8e7dc;
+      border-radius:999px;
+      padding:5px 9px;
+    }
+
+    .chapter-link{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-top:16px;
+      color:var(--green);
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .content-block{
+      background:rgba(255,255,255,.86);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:24px;
+      margin-top:18px;
+      box-shadow:0 16px 38px rgba(23,33,26,.07);
+    }
+
+    .mini-title{
+      font-size:23px;
+      color:var(--deep);
+      margin-bottom:8px;
+      letter-spacing:-.3px;
+    }
+
+    .lead{
+      color:var(--muted);
+      max-width:920px;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .note{
+      background:#f6f8f3;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+
+    .note h5{
+      color:var(--green);
+      font-size:16px;
+      margin-bottom:8px;
+    }
+
+    .note ul{
+      padding-left:18px;
+      color:var(--text);
+    }
+
+    .note li{
+      margin:5px 0;
+    }
+
+    .term-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .term{
+      padding:12px 14px;
+      border-radius:16px;
+      background:white;
+      border:1px solid var(--line);
+    }
+
+    .term b{
+      color:var(--deep);
+    }
+
+    .quiz-wrap{
+      margin-top:20px;
+      display:grid;
+      gap:16px;
+    }
+
+    .question-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 12px 26px rgba(23,33,26,.055);
+    }
+
+    .question-head{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:14px;
+    }
+
+    .q-num{
+      color:var(--green);
+      font-weight:950;
+      white-space:nowrap;
+    }
+
+    .question-card h5{
+      font-size:17px;
+      color:var(--deep);
+      line-height:1.42;
+      flex:1;
+    }
+
+    .options{
+      display:grid;
+      gap:9px;
+    }
+
+    .option{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 13px;
+      cursor:pointer;
+      transition:.16s ease;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      background:#fbfcfa;
+      color:var(--text);
+      font-weight:650;
+    }
+
+    .option:hover{
+      border-color:#b9cfbe;
+      background:#f3f8f1;
+    }
+
+    .option input{
+      margin-top:5px;
+      accent-color:var(--green);
+    }
+
+    .result{
+      display:none;
+      margin-top:12px;
+      padding:13px 14px;
+      border-radius:16px;
+      font-weight:750;
+    }
+
+    .result.correct{
+      display:block;
+      background:#eaf6ee;
+      color:#20583d;
+      border:1px solid #b9dfc4;
+    }
+
+    .result.wrong{
+      display:block;
+      background:#fff1ef;
+      color:#8d3333;
+      border:1px solid #f0c2bd;
+    }
+
+    .quiz-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
+
+    .check-btn{
+      border:0;
+      background:var(--green);
+      color:white;
+      border-radius:999px;
+      padding:12px 18px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .reset-btn{
+      border:1px solid var(--line);
+      background:white;
+      color:var(--green);
+      border-radius:999px;
+      padding:12px 18px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .score-box{
+      display:none;
+      margin-top:14px;
+      border-radius:18px;
+      padding:15px 16px;
+      background:var(--deep);
+      color:white;
+      font-weight:900;
+    }
+
+    .footer-note{
+      padding:34px 0 18px;
+      color:var(--muted);
+      text-align:center;
+      font-size:14px;
+    }
+
+    @media (max-width:900px){
+      .hero{
+        grid-template-columns:1fr;
+        padding-top:34px;
+      }
+
+      .grid-3,
+      .chapter-grid,
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-card{
+        padding:28px;
+        border-radius:28px;
+      }
+
+      .nav{
+        border-radius:24px;
+      }
+
+      .navlinks{
+        width:100%;
+      }
+
+      .navlinks a{
+        flex:1;
+        text-align:center;
+        background:#f6f8f3;
+      }
+    }
+
+    @media (max-width:520px){
+      .page{
+        width:min(100% - 18px, 1180px);
+      }
+
+      .hero h1{
+        font-size:34px;
+      }
+
+      .hero-card,
+      .book-card,
+      .content-block{
+        padding:20px;
+      }
+
+      .section{
+        padding:24px 0;
+      }
+
+      .question-head{
+        display:block;
+      }
+
+      .q-num{
+        display:block;
+        margin-bottom:6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="page">
+      <nav class="nav">
+        <a href="#home" class="brand">
+          <span class="brand-icon">⛰</span>
+          <span>Физикалық география I</span>
+        </a>
+
+        <div class="navlinks">
+          <a href="#books">Кітаптар</a>
+          <a href="#structure">Құрылым</a>
+          <a href="#practice">Тесттер</a>
+          <a href="#copyright">Құқық</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero page">
+      <div class="hero-card">
+        <div class="kicker">КТА дайындық курсы · География</div>
+        <h1>Қазақстанның физикалық географиясы I</h1>
+        <p>
+          Бұл сайт Қазақстан табиғатының қалыптасу заңдылықтарын, табиғи компоненттерін,
+          физикалық-географиялық аудандастырылуын және КТА тақырыптарымен байланысты
+          негізгі ұғымдарды жүйелі қайталауға арналған.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#books" class="btn btn-primary">Кітаптарды ашу</a>
+          <a href="#practice" class="btn btn-soft">Тестке өту</a>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="stat-card">
+          <strong>3</strong>
+          <span>негізгі кітап бөлімі</span>
+        </div>
+        <div class="stat-card">
+          <strong>26</strong>
+          <span>КТА тақырыптық бағытымен байланыс</span>
+        </div>
+        <div class="stat-card">
+          <strong>5</strong>
+          <span>әр сұрақтағы жауап нұсқасы</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="books" class="section page">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Кітаптар бойынша оқу</h2>
+          <p class="section-subtitle">
+            Әр кітап жеке бөлім ретінде берілген. Кітапты таңдағаннан кейін оның тақырыптары,
+            қысқаша сипаттамасы, негізгі терминдері және КТА үлгісіндегі тесттері ашылады.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="book-card">
+          <div>
+            <div class="book-num">1</div>
+            <h3>Физическая география Казахстана</h3>
+            <p>
+              Е.Н. Вилесов, А.А. Науменко, Л.К. Веселова, Б.Ж. Аубекеров.
+              Қазақстан табиғатының негізгі компоненттері мен аудандастырылуы қарастырылады.
+            </p>
+            <div class="book-meta">
+              <span class="pill">2009</span>
+              <span class="pill">Қазақ университеті</span>
+              <span class="pill">физикалық география</span>
+            </div>
+          </div>
+          <button class="btn open-btn" data-open-book="book1">1-кітапты ашу</button>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-num">2</div>
+            <h3>Физическая география Казахстана</h3>
+            <p>
+              К.Н. Мамирова. Қазақстанның табиғи компоненттері, табиғи кешендері,
+              аймақтық ерекшеліктері және қорғалатын аумақтары жүйеленеді.
+            </p>
+            <div class="book-meta">
+              <span class="pill">2015</span>
+              <span class="pill">Қыздар университеті</span>
+              <span class="pill">оқу құралы</span>
+            </div>
+          </div>
+          <button class="btn open-btn" data-open-book="book2">2-кітапты ашу</button>
+        </article>
+
+        <article class="book-card">
+          <div>
+            <div class="book-num">3</div>
+            <h3>Физическая география Республики Казахстан</h3>
+            <p>
+              Г.М. Джаналиева редакциясымен берілген еңбектегі Қазақстан табиғатының
+              физикалық-географиялық ерекшеліктері жеке оқу бөлімі ретінде ұсынылады.
+            </p>
+            <div class="book-meta">
+              <span class="pill">1998</span>
+              <span class="pill">Қазақ университеті</span>
+              <span class="pill">Қазақстан табиғаты</span>
+            </div>
+          </div>
+          <button class="btn open-btn" data-open-book="book3">3-кітапты ашу</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="structure" class="section page">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Оқу құрылымы</h2>
+          <p class="section-subtitle">
+            Кітап бөлімдері КТА-ның ресми тақырыптарымен байланыстырылады. Бір тақырып
+            бірнеше кітапта қайталанса, жаңа дерек, жаңа жіктеу немесе аймақтық ерекшелік
+            болған жағдайда ғана жеке оқу материалы ретінде беріледі.
+          </p>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="book1">1-кітап</button>
+        <button class="tab-btn" data-tab="book2">2-кітап</button>
+        <button class="tab-btn" data-tab="book3">3-кітап</button>
+      </div>
+
+      <div id="book1" class="book-section active">
+        <div class="content-block">
+          <h3 class="mini-title">1-кітап. Физическая география Казахстана</h3>
+          <p class="lead">
+            Бұл бөлімде Қазақстан аумағының табиғи дамуы, зерттелу тарихы, геологиялық
+            негізі, жер бедері, климаттық ерекшелігі, сулары, топырағы, өсімдігі, жануарлар
+            дүниесі және физикалық-географиялық аудандастырылуы қарастырылады.
+          </p>
+
+          <div class="chapter-grid">
+            <article class="chapter-card">
+              <div class="chapter-top">
+                <h4>Қазақстан табиғатын зерттеу кезеңдері</h4>
+              </div>
+              <p>
+                Ежелгі деректерден бастап Ресей және Қазақстан ғалымдарының кешенді
+                зерттеулеріне дейінгі негізгі кезеңдер қарастырылады.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">2-тақырып</span>
+                <span class="kta-tag">зерттелу тарихы</span>
+                <span class="kta-tag">картографиялық деректер</span>
+              </div>
+              <a href="#b1-t1" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <div class="chapter-top">
+                <h4>Тектоникалық-геологиялық құрылым</h4>
+              </div>
+              <p>
+                Қазақстан аумағының геологиялық даму тарихы, платформалар, қатпарлы
+                аймақтар және жер қыртысының құрылымдық негіздері түсіндіріледі.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">3-тақырып</span>
+                <span class="kta-tag">геология</span>
+                <span class="kta-tag">тектоника</span>
+              </div>
+              <a href="#b1-t2" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <div class="chapter-top">
+                <h4>Жер бедері және орографиялық құрылым</h4>
+              </div>
+              <p>
+                Жазықтар, ойпаттар, үстірттер, ұсақ шоқылар мен таулы жүйелердің
+                таралуы және олардың табиғи кешендерге ықпалы беріледі.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">4-тақырып</span>
+                <span class="kta-tag">жер бедері</span>
+                <span class="kta-tag">таулы аймақтар</span>
+              </div>
+              <a href="#b1-t3" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <div class="chapter-top">
+                <h4>Климат және климат қалыптастырушы факторлар</h4>
+              </div>
+              <p>
+                Географиялық орны, ауа массалары, радиациялық жағдай, атмосфералық
+                айналым және құрлық ішіндегі орналасудың климатқа әсері қарастырылады.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">5-тақырып</span>
+                <span class="kta-tag">климат</span>
+                <span class="kta-tag">континенттілік</span>
+              </div>
+              <a href="#b1-t4" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <div class="chapter-top">
+                <h4>Ішкі сулар</h4>
+              </div>
+              <p>
+                Өзендер, көлдер, мұздықтар, жер асты сулары және су ресурстарының
+                аумақ бойынша таралу ерекшеліктері талданады.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">6-тақырып</span>
+                <span class="kta-tag">өзендер</span>
+                <span class="kta-tag">көлдер</span>
+              </div>
+              <a href="#b1-t5" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <div class="chapter-top">
+                <h4>Топырақ, өсімдік және жануарлар дүниесі</h4>
+              </div>
+              <p>
+                Табиғат зоналары бойынша топырақ жамылғысы, өсімдік қауымдастықтары
+                және жануарлар дүниесінің таралу заңдылықтары беріледі.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">7-тақырып</span>
+                <span class="kta-tag">8-тақырып</span>
+                <span class="kta-tag">9-тақырып</span>
+                <span class="kta-tag">10-тақырып</span>
+              </div>
+              <a href="#b1-t6" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <div class="chapter-top">
+                <h4>Физикалық-географиялық аудандастыру</h4>
+              </div>
+              <p>
+                Қазақстан аумағын табиғи елдерге, облыстарға және провинцияларға бөлу
+                қағидалары мен аймақтық айырмашылықтары түсіндіріледі.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">12-тақырып</span>
+                <span class="kta-tag">аудандастыру</span>
+                <span class="kta-tag">табиғи кешен</span>
+              </div>
+              <a href="#b1-t7" class="chapter-link">Бөлімге өту →</a>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div id="book2" class="book-section">
+        <div class="content-block">
+          <h3 class="mini-title">2-кітап. Физическая география Казахстана</h3>
+          <p class="lead">
+            Бұл бөлім Қазақстанның жалпы физикалық-географиялық сипаттамасын,
+            аймақтық табиғи ерекшеліктерін және қорғалатын аумақтарын жүйелі қайталауға
+            арналған.
+          </p>
+
+          <div class="chapter-grid">
+            <article class="chapter-card">
+              <h4>Жалпы физикалық-географиялық сипаттама</h4>
+              <p>
+                Географиялық орны, шекаралары, зерттелу тарихы, геологиялық құрылымы,
+                жер бедері, климат, ішкі сулар, топырақ, өсімдік, жануарлар дүниесі және
+                табиғат зоналары қамтылады.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">1–13-тақырыптар</span>
+                <span class="kta-tag">жалпы қайталау</span>
+              </div>
+              <a href="#b2-t1" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <h4>Аймақтық физикалық-географиялық ерекшеліктер</h4>
+              <p>
+                Шығыс Еуропа жазығы, Мұғалжар, Солтүстік Қазақстан жазығы, Сарыарқа,
+                Тұран жазығы, Алтай, Сауыр-Тарбағатай, Жетісу Алатауы және Тянь-Шань
+                табиғи аймақтары қарастырылады.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">12-тақырып</span>
+                <span class="kta-tag">13-тақырып</span>
+                <span class="kta-tag">аймақтық география</span>
+              </div>
+              <a href="#b2-t2" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <h4>Қазақстан қорықтары</h4>
+              <p>
+                Ерекше қорғалатын табиғи аумақтар, қорықтардың табиғатты қорғаудағы
+                орны және табиғи кешендерді сақтау маңызы түсіндіріледі.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">11-тақырып</span>
+                <span class="kta-tag">13-тақырып</span>
+                <span class="kta-tag">қорғалатын аумақтар</span>
+              </div>
+              <a href="#b2-t3" class="chapter-link">Бөлімге өту →</a>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div id="book3" class="book-section">
+        <div class="content-block">
+          <h3 class="mini-title">3-кітап. Физическая география Республики Казахстан</h3>
+          <p class="lead">
+            Бұл бөлім Қазақстан Республикасының физикалық-географиялық ерекшеліктерін,
+            табиғи компоненттердің өзара байланысын және КТА тақырыптарымен сабақтас
+            негізгі ұғымдарды қайталауға арналған.
+          </p>
+
+          <div class="chapter-grid">
+            <article class="chapter-card">
+              <h4>Қазақстан аумағының табиғи негіздері</h4>
+              <p>
+                Географиялық орны, аумақтық ерекшелік, жер бедері мен табиғи жағдайлардың
+                қалыптасуындағы негізгі факторлар қарастырылады.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">1-тақырып</span>
+                <span class="kta-tag">3-тақырып</span>
+                <span class="kta-tag">4-тақырып</span>
+              </div>
+              <a href="#b3-t1" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <h4>Климат, сулар және табиғи ресурстар</h4>
+              <p>
+                Климаттың континенттік сипаты, ішкі сулардың таралуы және табиғи
+                ресурстардың аумақтық айырмашылықтары жүйеленеді.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">5-тақырып</span>
+                <span class="kta-tag">6-тақырып</span>
+                <span class="kta-tag">13-тақырып</span>
+              </div>
+              <a href="#b3-t2" class="chapter-link">Бөлімге өту →</a>
+            </article>
+
+            <article class="chapter-card">
+              <h4>Табиғат зоналары және аудандастыру</h4>
+              <p>
+                Қазақстан табиғатының зоналық өзгерісі, табиғи кешендердің таралуы және
+                физикалық-географиялық аудандастыру ұстанымдары беріледі.
+              </p>
+              <div class="tag-row">
+                <span class="kta-tag">10-тақырып</span>
+                <span class="kta-tag">12-тақырып</span>
+                <span class="kta-tag">табиғи кешен</span>
+              </div>
+              <a href="#b3-t3" class="chapter-link">Бөлімге өту →</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice" class="section page">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Тақырыптық тесттер</h2>
+          <p class="section-subtitle">
+            Әр тест белгілі бір кітап бөліміне және КТА тақырыбына сүйенеді. Жауапты
+            таңдағаннан кейін тексеру батырмасын басыңыз.
+          </p>
+        </div>
+      </div>
+
+      <div id="b1-t1" class="content-block">
+        <h3 class="mini-title">1-кітап · Қазақстан табиғатын зерттеу кезеңдері</h3>
+        <p class="lead">
+          Бұл бөлімде Қазақстан аумағы туралы алғашқы географиялық мәліметтер,
+          картографиялық деректер, саяхатшылар мен ғылыми экспедициялардың үлесі
+          қарастырылады.
+        </p>
+
+        <div class="info-grid">
+          <div class="note">
+            <h5>Негізгі ойлар</h5>
+            <ul>
+              <li>Қазақстан табиғаты туралы алғашқы деректер ежелгі және ортағасырлық еңбектерде кездеседі.</li>
+              <li>Ұлы Жібек жолы географиялық ақпарат алмасуға ықпал етті.</li>
+              <li>Араб ғалымдары Каспий, Арал, Сырдария маңы және Жетісу туралы мәліметтер қалдырды.</li>
+              <li>Кейінгі кезеңде карталар, әскери-саяси экспедициялар және ғылыми қоғамдар маңызды рөл атқарды.</li>
+            </ul>
+          </div>
+
+          <div class="note">
+            <h5>Терминдер</h5>
+            <div class="term-list">
+              <div class="term"><b>Картографиялық дерек</b> — аумақ туралы карта арқылы берілетін географиялық мәлімет.</div>
+              <div class="term"><b>Экспедиция</b> — белгілі бір аумақты зерттеу мақсатындағы ғылыми сапар.</div>
+              <div class="term"><b>Физикалық-географиялық зерттеу</b> — табиғи компоненттерді кешенді қарастыру.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-wrap" data-quiz="b1-history">
+          <article class="question-card" data-answer="B">
+            <div class="question-head">
+              <span class="q-num">1-сұрақ</span>
+              <h5>Қазақстан аумағының батыс бөлігі туралы алғашқы мәліметтер кімдердің еңбектерінде кездеседі?</h5>
+            </div>
+            <div class="options">
+              <label class="option"><input type="radio" name="b1h1" value="A"> А) П.С. Паллас, И.И. Лепехин, И.П. Фальк</label>
+              <label class="option"><input type="radio" name="b1h1" value="B"> B) Геродот, Страбон, Птолемей</label>
+              <label class="option"><input type="radio" name="b1h1" value="C"> C) И.К. Кирилов, В.Н. Татищев, Д. Эльтон</label>
+              <label class="option"><input type="radio" name="b1h1" value="D"> D) Г.С. Карелин, А. Гумбольдт, Н.И. Потанин</label>
+              <label class="option"><input type="radio" name="b1h1" value="E"> E) А.И. Бутаков, А.И. Макшеев, К.Е. Поспелов</label>
+            </div>
+            <div class="result" data-explain="Ежелгі грек авторлары Қазақстанның батысындағы Каспий, Арал, Еділ, Жайық маңы туралы алғашқы үзік мәліметтер қалдырған."></div>
+          </article>
+
+          <article class="question-card" data-answer="D">
+            <div class="question-head">
+              <span class="q-num">2-сұрақ</span>
+              <h5>Орта ғасырларда Жетісу, Қазақстанның оңтүстігі және Орта Азия арқылы өткен жолдың географиялық ақпарат алмасудағы маңызы қандай болды?</h5>
+            </div>
+            <div class="options">
+              <label class="option"><input type="radio" name="b1h2" value="A"> А) Мұздықтардың биіктік белдеулерін анықтады</label>
+              <label class="option"><input type="radio" name="b1h2" value="B"> B) Тектоникалық карталардың жүйесін жасады</label>
+              <label class="option"><input type="radio" name="b1h2" value="C"> C) Топырақ типтерін толық жіктеді</label>
+              <label class="option"><input type="radio" name="b1h2" value="D"> D) Шығыс пен Батыс арасында мәлімет таратуға жағдай жасады</label>
+              <label class="option"><input type="radio" name="b1h2" value="E"> E) Өнеркәсіптік аудандардың шекарасын белгіледі</label>
+            </div>
+            <div class="result" data-explain="Ұлы Жібек жолы саудамен бірге табиғат, жер бедері, өзен-көлдер және елді мекендер туралы мәліметтердің таралуына ықпал етті."></div>
+          </article>
+
+          <article class="question-card" data-answer="C">
+            <div class="question-head">
+              <span class="q-num">3-сұрақ</span>
+              <h5>Араб ғалымдары Қазақстан аумағын зерттеуде қай бағыттағы мәліметтерді көбірек қалдырды?</h5>
+            </div>
+            <div class="options">
+              <label class="option"><input type="radio" name="b1h3" value="A"> А) Мұғалжар мен Алтайдың пайдалы қазбалары</label>
+              <label class="option"><input type="radio" name="b1h3" value="B"> B) Солтүстік Қазақстанның орманды дала топырағы</label>
+              <label class="option"><input type="radio" name="b1h3" value="C"> C) Каспий, Арал, Сырдария маңы және Жетісу өңірі</label>
+              <label class="option"><input type="radio" name="b1h3" value="D"> D) Қаратау мен Тянь-Шань мұздықтарының қозғалысы</label>
+              <label class="option"><input type="radio" name="b1h3" value="E"> E) Сарыарқаның қазіргі экологиялық аудандары</label>
+            </div>
+            <div class="result" data-explain="Араб авторлары Каспий, Арал, Сырдария төменгі ағысы, Приаралье және Жетісу туралы географиялық сипаттамалар берген."></div>
+          </article>
+
+          <article class="question-card" data-answer="A">
+            <div class="question-head">
+              <span class="q-num">4-сұрақ</span>
+              <h5>«Книга Большому Чертежу» еңбегінің Қазақстан географиясын зерттеудегі маңызы немен байланысты?</h5>
+            </div>
+            <div class="options">
+              <label class="option"><input type="radio" name="b1h4" value="A"> А) Қазақстан аумағындағы бірқатар географиялық нысандарды картада көрсетуімен</label>
+              <label class="option"><input type="radio" name="b1h4" value="B"> B) Қазақстан климатын атмосфералық айналым бойынша жіктеуімен</label>
+              <label class="option"><input type="radio" name="b1h4" value="C"> C) Тянь-Шань мұздықтарының қазіргі ауданын есептеуімен</label>
+              <label class="option"><input type="radio" name="b1h4" value="D"> D) Қазақстан топырағын ендік зоналар бойынша сипаттауымен</label>
+              <label class="option"><input type="radio" name="b1h4" value="E"> E) Геоэкологиялық аудандастырудың толық жүйесін ұсынуымен</label>
+            </div>
+            <div class="result" data-explain="Бұл еңбек Ресей мемлекеті картасымен байланысты болып, Қазақстан аумағындағы өзен, тау, теңіз және басқа нысандар жөніндегі мәліметтерді сақтаған."></div>
+          </article>
+
+          <article class="question-card" data-answer="E">
+            <div class="question-head">
+              <span class="q-num">5-сұрақ</span>
+              <h5>С.У. Ремезовтің «Чертежная книга Сибири» еңбегі қандай бағыттағы зерттеудің басталуын көрсетеді?</h5>
+            </div>
+            <div class="options">
+              <label class="option"><input type="radio" name="b1h5" value="A"> А) Палеогеографиялық кезеңдерді салыстыру</label>
+              <label class="option"><input type="radio" name="b1h5" value="B"> B) Климаттық белдеулерді сандық талдау</label>
+              <label class="option"><input type="radio" name="b1h5" value="C"> C) Өнеркәсіп орталықтарын экономикалық бөлу</label>
+              <label class="option"><input type="radio" name="b1h5" value="D"> D) Шөлейт ландшафттарын геоэкологиялық бағалау</label>
+              <label class="option"><input type="radio" name="b1h5" value="E"> E) Қазақстан аумағын картографиялық зерттеу</label>
+            </div>
+            <div class="result" data-explain="Ремезов атласы Балқаш, Алакөл, Зайсан, Іле, Шу, Сырдария, Тянь-Шань, Тарбағатай сияқты нысандарды көрсетуімен маңызды."></div>
+          </article>
+
+          <div class="quiz-actions">
+            <button class="check-btn" data-check="b1-history">Жауаптарды тексеру</button>
+            <button class="reset-btn" data-reset="b1-history">Қайта белгілеу</button>
+          </div>
+
+          <div class="score-box" data-score="b1-history"></div>
+        </div>
+      </div>
